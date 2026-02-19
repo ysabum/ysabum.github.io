@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="apple-itunes-app" content="app-id=480883488">
+  <link rel="manifest" href="/web-app-manifest/manifest.json">
+  <meta name="sentry-trace" content="7bd96bab316f4b0fb595167ca3dfe838-59c17fc423254771-0"/>
+  <title>Week 6 Class 2 Live</title>
+
+<!-- Fonts Preload -->
+<link rel="preload" href="stylesheets/Lato-Regular-bd03a2cc27.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="stylesheets/Lato-Bold-cccb897485.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="stylesheets/Lato-Italic-4eb103b4d1.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+
+<!-- Canvas Core Fonts -->
+<link rel="stylesheet" href="stylesheets/fonts-eb4a10fb18.css" media="screen">
+
+<!-- Canvas Variables -->
+<link rel="stylesheet" href="stylesheets/variables-6ceabaf6137deaa1b310c07895491bdd.css" media="all">
+
+<!-- Canvas Common Bundle -->
+<link rel="stylesheet" href="stylesheets/common-fee4d5bd7a.css" media="all">
+
+<!-- Wiki Page Bundle -->
+<link rel="stylesheet" href="stylesheets/wiki_page-64d84d7ffb.css" media="screen">
+
+<!-- Global Tray Wellness -->
+<link rel="stylesheet" href="stylesheets/Global_tray_Wellness_20240409.css" media="all">
+
+<!-- Favicon -->
+<link rel="icon" type="stylesheets/x-icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="stylesheets/apple-touch-icon.png">
+ 
+
+
+<!--Scripts-->
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/ab4baa1a16693022f1c6c6a7efb588eb/variables-6ceabaf6137deaa1b310c07895491bdd.js" defer="defer"></script>
+
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/timezone/America/Chicago-d9fecf4265.js" defer="defer"></script>
+
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/timezone/America/Chicago-d9fecf4265.js" defer="defer"></script>
+
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/timezone/en_US-80a0ce259b.js" defer="defer"></script>
+
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/react-entry-be1bde4765d8e661.js" crossorigin="anonymous" defer="defer"></script>
+
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/main-entry-e71b9ea4bf017eb2.js" crossorigin="anonymous" defer="defer"></script>
+
+<script>
+//<![CDATA[
+(window.bundles || (window.bundles = [])).push('wiki_page_show');
+(window.bundles || (window.bundles = [])).push('navigation_header');
+//]]>
+</script>
+  
+
+
+<style>
+/* ===== Week 6 Live Session Prototype ===== */
+
+.week6-live-video {
+  background: #fff;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  border: none;
+}
+
+.week6-live-video img {
+  width: 100%;
+  max-width: 900px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+/* Right-side cards */
+.week6-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.week6-chat-log {
+  background: #f2f2f2;
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.week6-card textarea {
+  width: 100%;
+  height: 80px;
+}
+
+.week6-whiteboard-btn {
+  background: #5a2d82;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Modal */
+.week6-whiteboard-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.week6-whiteboard-content {
+  background: #fff;
+  width: 80%;
+  max-width: 900px;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.week6-whiteboard-area {
+  height: 400px;
+  border: 2px dashed #aaa;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.week6-card textarea {
+  font-family: Lato, Arial, sans-serif;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #c7cdd1;
+}
+
+/* Reduce gap between video and right sidebar */
+
+#content-wrapper {
+  padding-right: 12px !important;
+}
+
+#right-side-wrapper {
+  margin-left: -50px;
+  margin-top: 71px;
+}
+
+#right-side {
+  padding-left: -20px;
+}
+
+
+/* Fix Chat Comment Box Behavior */
+
+.week6-card {
+  overflow: hidden; 
+}
+
+.week6-card textarea {
+  resize: none;              /* Disable manual resizing */
+  box-sizing: border-box;    /* Respect container width */
+  width: 100%;
+  max-width: 100%;
+  height: 80px;
+  overflow-y: auto;          /* Scroll instead of grow */
+}
+
+
+/* FORCE Canvas Right Sidebar Visible */
+#right-side-wrapper.ic-app-main-content__secondary {
+  display: block !important;
+  width: 320px !important;
+  min-width: 320px !important;
+}
+
+#right-side {
+  display: block !important;
+}
+</style>
+</head>
+
+<!--Main Body-->
+<body class="with-left-side course-menu-expanded padless-content pages primary-nav-expanded full-width context-course_96367 responsive_student_grades_page">
+
+<noscript>
+  <div role="alert" class="ic-flash-static ic-flash-error">
+    <div class="ic-flash__icon" aria-hidden="true">
+      <i class="icon-warning"></i>
+    </div>
+    <h1>You need to have JavaScript enabled in order to access this site.</h1>
+  </div>
+</noscript>
+
+
+<div id="flash_message_holder"></div>
+<div id="flash_screenreader_holder"></div>
+<div id="application" class="ic-app ">
+  
+<!--Top Navbar-->
+<header id="mobile-header" class="no-print">
+  <button type="button" class="Button Button--icon-action-rev Button--large mobile-header-hamburger">
+    <i class="icon-solid icon-hamburger"></i>
+    <span id="mobileHeaderInboxUnreadBadge" class="menu-item__badge" style="min-width: 0; top: 12px; height: 12px; right: 6px; display:none;"></span>
+    <span class="screenreader-only">Global Navigation Menu</span>
+  </button>
+  <div class="mobile-header-space"></div>
+    <a class="mobile-header-title expandable" href="/courses/96367" role="button" aria-controls="mobileContextNavContainer">
+      <div>ACMP4260001.1261</div>
+        <div>Week 6 Class 2 </div>
+    </a>
+
+  <div id="nutrition_facts_mobile_container"></div>
+    <div id="immersive_reader_mobile_mount_point"></div>
+    <div class="mobile-header-space"></div>
+    <button type="button" class="Button Button--icon-action-rev Button--large mobile-header-arrow" aria-label="Navigation Menu">
+      <i class="icon-arrow-open-down" id="mobileHeaderArrowIcon"></i>
+    </button>
+</header>
+
+<!--Left-most black nav bar-->
+<nav id="mobileContextNavContainer"></nav>
+<header id="header" class="ic-app-header no-print " aria-label="Global Header">
+  <a href="#content" id="skip_navigation_link">Skip To Content</a>
+  <div role="region" class="ic-app-header__main-navigation" aria-label="Global Navigation">
+      <div class="ic-app-header__logomark-container">
+        <a href="https://unomaha.instructure.com/" class="ic-app-header__logomark">
+          <span class="screenreader-only">Dashboard</span>
+        </a>
+      </div>
+    <ul id="menu" class="ic-app-header__menu-list">
+        <li class="menu-item ic-app-header__menu-list-item ">
+          <a id="global_nav_profile_link" role="button" href="/profile/settings" class="ic-app-header__menu-list-link">
+            <div class="menu-item-icon-container">
+              <div aria-hidden="true" class="fs-exclude ic-avatar ">
+                <img src="images/gravitar.jpg" alt="Bob Smith" />
+              </div>
+              <span class="menu-item__badge"></span>
+            </div>
+            <div class="menu-item__text">
+              Account
+            </div>
+          </a>
+        </li>
+      <li class="ic-app-header__menu-list-item ">
+        <a id="global_nav_dashboard_link" href="https://unomaha.instructure.com/" class="ic-app-header__menu-list-link">
+          <div class="menu-item-icon-container" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--dashboard" version="1.1" x="0" y="0" viewBox="0 0 280 200" enable-background="new 0 0 280 200" xml:space="preserve"><path d="M273.09,180.75H197.47V164.47h62.62A122.16,122.16,0,1,0,17.85,142a124,124,0,0,0,2,22.51H90.18v16.29H6.89l-1.5-6.22A138.51,138.51,0,0,1,1.57,142C1.57,65.64,63.67,3.53,140,3.53S278.43,65.64,278.43,142a137.67,137.67,0,0,1-3.84,32.57ZM66.49,87.63,50.24,71.38,61.75,59.86,78,76.12Zm147,0L202,76.12l16.25-16.25,11.51,11.51ZM131.85,53.82v-23h16.29v23Zm15.63,142.3a31.71,31.71,0,0,1-28-16.81c-6.4-12.08-15.73-72.29-17.54-84.25a8.15,8.15,0,0,1,13.58-7.2c8.88,8.21,53.48,49.72,59.88,61.81a31.61,31.61,0,0,1-27.9,46.45ZM121.81,116.2c4.17,24.56,9.23,50.21,12,55.49A15.35,15.35,0,1,0,161,157.3C158.18,152,139.79,133.44,121.81,116.2Z" /></svg>
+
+          </div>
+          <div class="menu-item__text">
+            Dashboard
+          </div>
+        </a>
+      </li>
+        <li class="menu-item ic-app-header__menu-list-item ic-app-header__menu-list-item--active">
+          <a id="global_nav_courses_link" role="button" href="/courses" class="ic-app-header__menu-list-link">
+            <div class="menu-item-icon-container" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--courses" version="1.1" x="0" y="0" viewBox="0 0 280 259" enable-background="new 0 0 280 259" xml:space="preserve"><path d="M73.31,198c-11.93,0-22.22,8-24,18.73a26.67,26.67,0,0,0-.3,3.63v.3a22,22,0,0,0,5.44,14.65,22.47,22.47,0,0,0,17.22,8H200V228.19h-134V213.08H200V198Zm21-105.74h90.64V62H94.3ZM79.19,107.34V46.92H200v60.42Zm7.55,30.21V122.45H192.49v15.11ZM71.65,16.71A22.72,22.72,0,0,0,49,39.36V190.88a41.12,41.12,0,0,1,24.32-8h157V16.71ZM33.88,39.36A37.78,37.78,0,0,1,71.65,1.6H245.36V198H215.15v45.32h22.66V258.4H71.65a37.85,37.85,0,0,1-37.76-37.76Z"/></svg>
+
+            </div>
+            <div class="menu-item__text">
+              Courses
+            </div>
+          </a>
+        </li>
+        <li class="menu-item ic-app-header__menu-list-item ">
+          <a id="global_nav_groups_link" role="button" href="/groups" class="ic-app-header__menu-list-link">
+            <div class="menu-item-icon-container" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--groups" viewBox="0 0 200 135"><path d="M134.5 129.4c0-1.1 0-19.8-6.2-31.1-4.5-8.5-16.4-12.4-35-19.2-1.7-.6-3.4-1.1-5.1-1.7v-8.5c5.6-5.1 8.5-12.4 8.5-20.3V29.4C96.6 13 83.6 0 67.2 0S37.9 13 37.9 29.4v19.2c0 7.3 3.4 14.7 8.5 20.3v8.5c-1.7.6-3.4 1.1-5.1 1.7-18.6 6.2-30.5 10.7-35 19.2C0 109.6 0 128.8 0 129.4c0 3.4 2.3 5.6 5.6 5.6h123.7c3.5 0 5.7-2.3 5.2-5.6zm-123.2-5.7c.6-5.6 1.7-14.7 3.4-19.8C17 98.8 30 94.3 43.5 89.8c2.8-1.1 5.6-2.3 9-3.4 2.3-.6 4-2.8 4-5.1V66.7c0-1.7-.6-3.4-1.7-4.5-4-3.4-6.2-8.5-6.2-13.6V29.4c0-10.2 7.9-18.1 18.1-18.1s18.1 7.9 18.1 18.1v19.2c0 5.1-2.3 10.2-6.2 13.6-1.1 1.1-1.7 2.8-1.7 4.5v14.7c0 2.3 1.7 4.5 4 5.1 2.8 1.1 6.2 2.3 9 3.4 13.6 5.1 26.6 9.6 28.8 14.1 2.8 5.1 4 13.6 4.5 19.8H11.3zM196 79.1c-2.8-6.2-11.3-9.6-22.6-13.6l-1.7-.6v-3.4c4.5-4 6.8-9.6 6.8-15.8V35c0-12.4-9.6-22-22-22s-22 10.2-22 22v10.7c0 6.2 2.3 11.9 6.8 15.8V65l-1.7.6c-7.3 2.8-13 4.5-16.9 7.3-1.7 1.1-2.3 2.8-2.3 5.1.6 1.7 1.7 3.4 3.4 4.5 7.9 4 12.4 7.3 14.1 10.7 2.3 4.5 4 10.2 5.1 18.1.6 2.3 2.8 4.5 5.6 4.5h45.8c3.4 0 5.6-2.8 5.6-5.1 0-3.9 0-24.3-4-31.6zm-42.9 25.4c-1.1-6.8-2.8-12.4-5.1-16.9-1.7-4-5.1-6.8-9.6-10.2 1.7-1.1 3.4-1.7 5.1-2.3l5.6-2.3c1.7-.6 3.4-2.8 3.4-5.1v-9.6c0-1.7-.6-3.4-2.3-4.5-2.8-1.7-4.5-5.1-4.5-8.5V34.5c0-6.2 4.5-10.7 10.7-10.7s10.7 5.1 10.7 10.7v10.7c0 3.4-1.7 6.2-4.5 8.5-1.1 1.1-2.3 2.8-2.3 4.5v10.2c0 2.3 1.1 4.5 3.4 5.1l5.6 2.3c6.8 2.3 15.3 5.6 16.4 7.9 1.7 2.8 2.8 12.4 2.8 20.9h-35.4z"/></svg>
+
+            </div>
+            <div class="menu-item__text">
+              Groups
+            </div>
+          </a>
+        </li>
+      <li class="menu-item ic-app-header__menu-list-item ">
+        <a id="global_nav_calendar_link" href="/calendar" class="ic-app-header__menu-list-link">
+          <div class="menu-item-icon-container" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--calendar" version="1.1" x="0" y="0" viewBox="0 0 280 280" enable-background="new 0 0 280 280" xml:space="preserve"><path d="M197.07,213.38h16.31V197.07H197.07Zm-16.31,16.31V180.76h48.92v48.92Zm-48.92-16.31h16.31V197.07H131.85Zm-16.31,16.31V180.76h48.92v48.92ZM66.62,213.38H82.93V197.07H66.62ZM50.32,229.68V180.76H99.24v48.92Zm146.75-81.53h16.31V131.85H197.07Zm-16.31,16.31V115.54h48.92v48.92Zm-48.92-16.31h16.31V131.85H131.85Zm-16.31,16.31V115.54h48.92v48.92ZM66.62,148.15H82.93V131.85H66.62ZM50.32,164.46V115.54H99.24v48.92ZM34,262.29H246V82.93H34ZM246,66.62V42.16A8.17,8.17,0,0,0,237.84,34H213.38v8.15a8.15,8.15,0,1,1-16.31,0V34H82.93v8.15a8.15,8.15,0,0,1-16.31,0V34H42.16A8.17,8.17,0,0,0,34,42.16V66.62Zm-8.15-48.92a24.49,24.49,0,0,1,24.46,24.46V278.6H17.71V42.16A24.49,24.49,0,0,1,42.16,17.71H66.62V9.55a8.15,8.15,0,0,1,16.31,0v8.15H197.07V9.55a8.15,8.15,0,1,1,16.31,0v8.15Z"/></svg>
+
+          </div>
+          <div class="menu-item__text">
+            Calendar
+          </div>
+        </a>
+      </li>
+      <li class="menu-item ic-app-header__menu-list-item ">
+      <!-- TODO: Add back global search when available -->
+        <a id="global_nav_conversations_link" href="/conversations" class="ic-app-header__menu-list-link">
+          <div class="menu-item-icon-container">
+            <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--inbox" version="1.1" x="0" y="0" viewBox="0 0 280 280" enable-background="new 0 0 280 280" xml:space="preserve"><path d="M91.72,120.75h96.56V104.65H91.72Zm0,48.28h80.47V152.94H91.72Zm0-96.56h80.47V56.37H91.72Zm160.94,34.88H228.52V10.78h-177v96.56H27.34A24.17,24.17,0,0,0,3.2,131.48V244.14a24.17,24.17,0,0,0,24.14,24.14H252.66a24.17,24.17,0,0,0,24.14-24.14V131.48A24.17,24.17,0,0,0,252.66,107.34Zm0,16.09a8.06,8.06,0,0,1,8,8v51.77l-32.19,19.31V123.44ZM67.58,203.91v-177H212.42v177ZM27.34,123.44H51.48v79.13L19.29,183.26V131.48A8.06,8.06,0,0,1,27.34,123.44ZM252.66,252.19H27.34a8.06,8.06,0,0,1-8-8V202l30,18H230.75l30-18v42.12A8.06,8.06,0,0,1,252.66,252.19Z"/></svg>
+</span>
+            <span class="menu-item__badge"></span>
+          </div>
+          <div class="menu-item__text">
+            Inbox
+          </div>
+        </a>
+      </li>
+        <li class="menu-item ic-app-header__menu-list-item" >
+          <a id="global_nav_history_link" role="button" href="#" class="ic-app-header__menu-list-link">
+            <div class="menu-item-icon-container" aria-hidden="true">
+              <svg viewBox="0 0 1920 1920" class="ic-icon-svg menu-item__icon svg-icon-history" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path d="M960 112.941c-467.125 0-847.059 379.934-847.059 847.059 0 467.125 379.934 847.059 847.059 847.059 467.125 0 847.059-379.934 847.059-847.059 0-467.125-379.934-847.059-847.059-847.059M960 1920C430.645 1920 0 1489.355 0 960S430.645 0 960 0s960 430.645 960 960-430.645 960-960 960m417.905-575.955L903.552 988.28V395.34h112.941v536.47l429.177 321.77-67.765 90.465z" stroke="none" stroke-width="1" fill-rule="evenodd"/>
+</svg>
+            </div>
+            <div class="menu-item__text">
+              History
+            </div>
+          </a>
+        </li>
+        
+    <li id="context_external_tool_1_menu_item" class="globalNavExternalTool menu-item ic-app-header__menu-list-item">
+      <a class='ic-app-header__menu-list-link' href="/accounts/1/external_tools/1?launch_type=global_navigation" target="">
+          <svg version="1.1" class="ic-icon-svg ic-icon-svg--lti menu-item__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64">
+            <path d="M9.4 32c0-7.8 6.5-14.3 14.4-14.3h11.7v-9.4h-11.8c-13.1 0-23.7 10.6-23.7 23.7s10.7 23.7 23.7 23.7h11.7v-9.4h-11.7c-7.9 0-14.3-6.5-14.3-14.3z m54.6 0l-19.1-17v11.3h-20.2c-3.1 0-5.6 2.5-5.6 5.6s2.5 5.6 5.6 5.7h20.2v11.2l19.1-16.8z"/>
+          </svg>
+        <div class="menu-item__text">
+          Commons
+        </div>
+      </a>
+    </li>
+
+      <li class="ic-app-header__menu-list-item">
+        <a id="global_nav_help_link" role="button" class="ic-app-header__menu-list-link" data-track-category="help system" data-track-label="help button" href="https://help.instructure.com">
+          <div class="menu-item-icon-container" role="presentation">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg menu-item__icon svg-icon-help" version="1.1" x="0" y="0" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve" fill="currentColor"><path d="M100,127.88A11.15,11.15,0,1,0,111.16,139,11.16,11.16,0,0,0,100,127.88Zm8.82-88.08a33.19,33.19,0,0,1,23.5,23.5,33.54,33.54,0,0,1-24,41.23,3.4,3.4,0,0,0-2.74,3.15v9.06H94.42v-9.06a14.57,14.57,0,0,1,11.13-14,22.43,22.43,0,0,0,13.66-10.27,22.73,22.73,0,0,0,2.31-17.37A21.92,21.92,0,0,0,106,50.59a22.67,22.67,0,0,0-19.68,3.88,22.18,22.18,0,0,0-8.65,17.64H66.54a33.25,33.25,0,0,1,13-26.47A33.72,33.72,0,0,1,108.82,39.8ZM100,5.2A94.8,94.8,0,1,0,194.8,100,94.91,94.91,0,0,0,100,5.2m0,178.45A83.65,83.65,0,1,1,183.65,100,83.73,83.73,0,0,1,100,183.65" transform="translate(-5.2 -5.2)"/></svg>
+
+            <span class="menu-item__badge"></span>
+          </div>
+          <div class="menu-item__text">
+            Help
+          </div>
+</a>      </li>
+    </ul>
+  </div>
+  <div class="ic-app-header__secondary-navigation">
+    <ul class="ic-app-header__menu-list">
+      <li class="menu-item ic-app-header__menu-list-item">
+        <a
+          id="primaryNavToggle"
+          role="button"
+          href="#"
+          class="ic-app-header__menu-list-link ic-app-header__menu-list-link--nav-toggle"
+          aria-label="Minimize global navigation"
+          title="Minimize global navigation"
+        >
+          <div class="menu-item-icon-container" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--navtoggle" version="1.1" x="0" y="0" width="40" height="32" viewBox="0 0 40 32" xml:space="preserve">
+  <path d="M39.5,30.28V2.48H37.18v27.8Zm-4.93-13.9L22.17,4,20.53,5.61l9.61,9.61H.5v2.31H30.14l-9.61,9.61,1.64,1.64Z"/>
+</svg>
+
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div id="global_nav_tray_container"></div>
+  <div id="global_nav_tour"></div>
+</header>
+
+<!--Course left navbar (home, syllabus, etc.)-->
+  <div id="instructure_ajax_error_box">
+    <div style="text-align: right; background-color: #fff;"><a href="#" class="close_instructure_ajax_error_box_link">Close</a></div>
+    <iframe id="instructure_ajax_error_result" src="about:blank" style="border: 0;" title="Error"></iframe>
+  </div>
+
+  <div id="wrapper" class="ic-Layout-wrapper">
+        <div class="ic-app-nav-toggle-and-crumbs no-print">
+            <button type="button" id="courseMenuToggle" class="Button Button--link ic-app-course-nav-toggle" aria-live="polite" aria-label="Hide Courses Navigation Menu">
+              <i class="icon-hamburger" aria-hidden="true"></i>
+            </button>
+
+          <div class="ic-app-crumbs ">
+              <nav id="breadcrumbs" role="navigation" aria-label="breadcrumbs"><ol><li class="home"><a href="/"><span class="ellipsible"><i class="icon-home"
+   title="My Dashboard">
+  <span class="screenreader-only">My Dashboard</span>
+</i>
+</span></a></li><li><a href="/courses/96367"><span class="ellipsible">ACMP4260001.1261</span></a></li><li><a href="/courses/96367/pages"><span class="ellipsible">Pages</span></a></li><li aria-current="page"><span class="ellipsible">Week 6 Class 2 </span></li></ol></nav>
+          </div>
+
+
+          <div id="nutrition_facts_container"></div>
+          <div class="right-of-crumbs right-of-crumbs-no-reverse">
+                <div id="immersive_reader_mount_point"></div>
+              <div id="ai-information-mount"></div>
+          </div>
+
+        </div>
+    <div id="main" class="ic-Layout-columns">
+        <div class="ic-Layout-watermark" aria-hidden="true"></div>
+        <div id="left-side"
+          class="ic-app-course-menu ic-sticky-on list-view"
+          style="display: block"
+          >
+          <div id="sticky-container" class="ic-sticky-frame">
+              <span id="section-tabs-header-subtitle" class="ellipsis">2026 Spring</span>
+            <nav role="navigation" aria-label="Courses Navigation Menu"><ul id="section-tabs"><li class="section"><a href="/courses/96367" id="home-link" class="home">Home</a></li><li class="section"><a href="/courses/96367/assignments/syllabus" id="syllabus-link" class="syllabus">Syllabus</a></li><li class="section"><a href="/courses/96367/announcements" id="announcements-link" class="announcements">Announcements</a></li><li class="section"><a href="/courses/96367/modules" id="modules-link" class="modules">Modules</a></li><li class="section"><a href="/courses/96367/users" id="people-link" class="people">People</a></li><li class="section"><a href="/courses/96367/external_tools/6503" id="ace-course-evaluations-link" class="context_external_tool_6503">ACE Course Evaluations</a></li><li class="section"><a href="/courses/96367/discussion_topics" id="discussions-link" class="discussions">Discussions</a></li><li class="section"><a href="/courses/96367/assignments" id="assignments-link" class="assignments">Assignments</a></li><li class="section"><a href="/courses/96367/grades" id="grades-link" class="grades">Grades</a></li><li class="section"><a href="/courses/96367/external_tools/7332" id="teaching-policies-link" class="context_external_tool_7332">Teaching Policies</a></li><li class="section"><a href="/courses/96367/external_tools/8549" id="lucid-(whiteboard)-link" class="context_external_tool_8549">Lucid (Whiteboard)</a></li><li class="section"><a href="/courses/96367/external_tools/9968" id="ia-bookshelf-(new)-link" class="context_external_tool_9968">IA Bookshelf (new)</a></li><li class="section"><a href="/courses/96367/external_tools/10393" id="microsoft-onedrive-(lti-1.3)-link" class="context_external_tool_10393">Microsoft OneDrive (LTI 1.3)</a></li></ul></nav>
+          </div>
+        </div>
+      <div id="not_right_side" class="ic-app-main-content">
+        <div id="content-wrapper" class="ic-Layout-contentWrapper">
+          
+          <div id="content" class="ic-Layout-contentMain" role="main">
+
+            
+<!--Video-->
+<h1 class="page-title">Week 6 Class 2 Live Session</h1>
+<div class="week6-live-video">
+  <img src="images/mock_live.png" alt="Mock live lecture video">
+</div>
+
+<!--Whiteboard-->
+<button class="week6-whiteboard-btn" onclick="openWeek6Whiteboard()">
+  Open Whiteboard
+</button>
+
+
+  
+<!--Right Side-->
+<div id="wiki_page_show"></div>
+<div id="module_navigation_target"></div>
+</div>
+</div>
+        <div id="right-side-wrapper" class="ic-app-main-content__secondary">
+          <aside id="right-side" role="complementary">
+
+            <div class="week6-card">
+              <strong>Class Chat</strong>
+              <div class="week6-chat-log">
+                (08:17:06) <strong>John Doe</strong>: I want to go to sleep
+              </div>
+              <div class="week6-chat-log">
+                (08:17:59) <strong>Bob Smith</strong>: Fs in the chat
+              </div>
+              <textarea placeholder="Type your message..."></textarea>
+              <button>Post</button>
+            </div>
+
+            <div class="week6-card">
+              <strong>Quick Poll</strong>
+              <p>(08:14) Which UX stage are you in?</p>
+              <label><input type="radio" name="poll"> Research</label><br>
+              <label><input type="radio" name="poll"> Wireframing</label><br>
+              <label><input type="radio" name="poll"> Prototyping</label><br>
+              <button>Post</button>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!--Whiteboard Popout Stuff-->
+<div class="week6-whiteboard-modal" id="week6WhiteboardModal">
+  <div class="week6-whiteboard-content">
+    <button onclick="closeWeek6Whiteboard()">X</button>
+    <h2>Class Whiteboard</h2>
+    <div class="week6-whiteboard-area">
+      Whiteboard Area (Prototype)
+    </div>
+  </div>
+</div>
+
+<script>
+function openWeek6Whiteboard() {
+  document.getElementById("week6WhiteboardModal").style.display = "flex";
+}
+
+function closeWeek6Whiteboard() {
+  document.getElementById("week6WhiteboardModal").style.display = "none";
+}
+</script>
+
+
+<!--???-->
+  <script>
+    Object.assign(
+      ENV,
+      {}
+    )
+  </script>
+
+
+ <!--Accessability--> 
+<script>
+//<![CDATA[
+(window.deferredBundles || (window.deferredBundles = [])).push('usage_metrics');
+(window.bundles || (window.bundles = [])).push('inst_fs_service_worker');
+//]]>
+</script>
+<script src="https://instructure-uploads.s3.amazonaws.com/account_93220000000000001/attachments/13377347/Cavas_global_theme_h5P_test_20251112.js" defer="defer"></script>
+  <script src="https://instructure-uploads.s3.amazonaws.com/account_93220000000000001/attachments/5223144/empty.js" defer="defer"></script>
+
+
+
