@@ -1,0 +1,95 @@
+    :root {
+      --brand-red:      #C20830;
+      --brand-red-dark: #880015;
+      --text-dark:  #1a1a1a;
+      --text-mid:   #444;
+      --text-light: #888;
+      --border:     #e0e0e0;
+      --input-bg:   #f5f5f5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;
+      background: #fff;
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 520px;
+      margin: 36px auto 60px;
+      padding: 0 24px;
+    }
+
+    /* ── Step indicator ── */
+    .steps { display: flex; align-items: center; gap: 8px; margin-bottom: 28px; }
+    .step {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      border: 2px solid var(--border); color: var(--text-light);
+      font-family: Cambria, serif;
+    }
+    .step.active { background: var(--brand-red); border-color: var(--brand-red); color: #fff; }
+    .step.done   { background: var(--text-dark);  border-color: var(--text-dark);  color: #fff; }
+    .step-line { flex: 1; height: 2px; background: var(--border); }
+    .step-line.done { background: var(--text-dark); }
+
+    .section-title { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .section-subtitle { font-size: 13px; color: var(--text-light); margin-bottom: 24px; line-height: 1.5; font-family: sans-serif; }
+
+    /* ── Form ── */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-mid); font-family: sans-serif; }
+    .form-input {
+      padding: 13px 16px; border: 1.5px solid var(--border);
+      font-family: sans-serif; font-size: 14px; color: var(--text-dark);
+      background: var(--input-bg); outline: none; width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus { border-color: var(--brand-red); box-shadow: 0 0 0 3px rgba(194,8,48,0.12); background: #fff; }
+    .form-input::placeholder { color: #aaa; }
+    .form-input.error { border-color: #d32f2f; }
+    .error-text { color: #d32f2f; font-size: 12px; font-family: sans-serif; min-height: 1em; }
+
+    .divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .sub-heading { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+
+    /* ── Radio options ── */
+    .radio-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .radio-opt {
+      display: flex; align-items: center; gap: 12px;
+      padding: 13px 16px; border: 1.5px solid var(--border);
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      font-family: sans-serif; user-select: none;
+    }
+    .radio-opt:hover { border-color: #ccc; background: #fafafa; }
+    .radio-opt.selected { border-color: var(--brand-red); background: #fff0f3; }
+    .radio-outer { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.15s; }
+    .radio-opt.selected .radio-outer { border-color: var(--brand-red); }
+    .radio-inner { width: 10px; height: 10px; border-radius: 50%; background: var(--brand-red); opacity: 0; transition: opacity 0.15s; }
+    .radio-opt.selected .radio-inner { opacity: 1; }
+    .radio-opt-label { font-size: 14px; font-weight: 500; color: var(--text-dark); }
+
+    /* ── Time dropdown ── */
+    .time-select-row { display: none; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .time-select-row.visible { display: flex; }
+    .form-select {
+      padding: 13px 16px; border: 1.5px solid var(--border);
+      font-family: sans-serif; font-size: 14px; color: var(--text-dark);
+      background: var(--input-bg); outline: none; cursor: pointer; flex: 1;
+      transition: border-color 0.2s;
+    }
+    .form-select:focus { border-color: var(--brand-red); }
+
+    /* ── Buttons ── */
+    .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+    .btn { flex: 1; padding: 14px; font-family: Cambria, serif; font-size: 14px; font-weight: 700; cursor: pointer; border: none; transition: all 0.15s; letter-spacing: 0.04em; text-transform: uppercase; }
+    .btn-cancel { background: #fff; color: var(--text-dark); border: 1.5px solid var(--border); }
+    .btn-cancel:hover { background: var(--input-bg); }
+    .btn-continue { background: var(--brand-red); color: #fff; }
+    .btn-continue:hover { background: var(--brand-red-dark); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(194,8,48,0.35); }
+    .btn-continue:active { transform: translateY(0); }

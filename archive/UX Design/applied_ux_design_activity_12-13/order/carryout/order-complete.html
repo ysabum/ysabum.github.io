@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Happy Burger – Order Confirmed!</title>
+
+  <link rel="stylesheet" href="../../css/home.css" />
+  <link rel="stylesheet" href="../../css/c_order-complete.css" />
+</head>
+<body>
+
+<!-- ── Header ── -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr><td colspan="8"><img src="../../images/divider.png" style="width:100%;height:3px;display:block;" alt=""></td></tr>
+    <tr>
+      <td width="28" rowspan="2" bgcolor="#FFFFFF">&nbsp;</td>
+      <td width="186" rowspan="2" bgcolor="#FFFFFF">
+        <a href="../../index.html"><img src="../../images/logo_v2.png" width="150" height="100" alt="Happy Burgers" /></a>
+      </td>
+      <td width="282" height="42" bgcolor="#FFFFFF" style="font-size:36px;">&nbsp;</td>
+      <td width="119" bgcolor="#FFFFFF" style="font-size:36px;">&nbsp;</td>
+      <td width="237" bgcolor="#FFFFFF" style="font-size:36px;">&nbsp;</td>
+      <td colspan="2" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size:24px;color:#C20830;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><strong>⌕ SEARCH</strong></td>
+      <td width="41" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size:24px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="67" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="#" class="nav-link full-cell"><strong>LOCATIONS</strong></a></td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="../../menu/index.html" class="nav-link full-cell"><strong>MENU</strong></a></td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="#" class="nav-link full-cell"><strong>EMPLOYMENT</strong></a></td>
+      <td width="172" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="#" class="nav-link full-cell"><strong>HISTORY</strong></a></td>
+      <td width="135" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="#" class="nav-link full-cell"><strong>ABOUT</strong></a></td>
+      <td bgcolor="#FFFFFF">&nbsp;</td>
+    </tr>
+    <tr><td height="3" colspan="8"><img src="../../images/divider.png" style="width:100%;height:3px;display:block;" alt=""></td></tr>
+  </tbody>
+</table>
+
+<!-- ── Page Content ── -->
+<div class="page">
+
+  <!-- Left column -->
+  <div class="left-col">
+
+    <!-- All steps done -->
+    <div class="steps">
+      <div class="step done">&#10003;</div>
+      <div class="step-line done"></div>
+      <div class="step done">&#10003;</div>
+      <div class="step-line done"></div>
+      <div class="step done">&#10003;</div>
+    </div>
+
+    <!-- Success banner -->
+    <div class="success-banner">
+      <div class="success-check">&#10003;</div>
+      <div class="success-text-block">
+        <div class="success-title">Your Order Has Been Placed!</div>
+        <div class="confirmation-num">Confirmation #: <strong id="confirm-id"></strong></div>
+      </div>
+    </div>
+
+    <!-- Customer details -->
+    <div class="section">
+      <div class="section-row">
+        <div class="section-label">Your Details</div>
+        <div class="section-content">
+          <div class="info-line"><strong>Name:</strong> <span id="confirm-name"></span></div>
+          <div class="info-line"><strong>Email:</strong> <span id="confirm-email"></span></div>
+          <div class="info-line"><strong>Phone:</strong> <span id="confirm-phone"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pickup time -->
+    <div class="section">
+      <div class="section-row">
+        <div class="section-label">Pickup Time</div>
+        <div class="section-content">
+          <div class="info-line" id="confirm-time"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right column: Order summary -->
+  <div class="order-summary">
+    <div class="summary-header">Order Summary</div>
+    <div class="summary-body">
+      <div class="summary-line">
+        <span class="label">Subtotal</span>
+        <span class="value" id="confirm-subtotal"></span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Tax (8.5%)</span>
+        <span class="value" id="confirm-tax"></span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="total-line">
+        <span>Total</span>
+        <span id="confirm-total"></span>
+      </div>
+      <button class="home-btn" onclick="goHome()">Return to Home</button>
+    </div>
+    <div class="order-items" id="confirm-items-list"></div>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td width="14%" height="26" bgcolor="#000000" style="text-align:center;"><a href="" target="_blank" style="color:#FFFFFF;">Associate Link</a></td>
+      <td width="21%" bgcolor="#000000" style="text-align:center;"><a href="" style="color:#FFFFFF;">Transparency Supply Chain</a></td>
+      <td width="14%" bgcolor="#000000" style="text-align:center;"><a href="" style="color:#FFFFFF;">Privacy Policy</a></td>
+      <td width="16%" bgcolor="#000000" style="text-align:center;"><a href="" style="color:#FFFFFF;">Terms &amp; Conditions</a></td>
+      <td width="12%" bgcolor="#000000" style="text-align:center;"><a href="" style="color:#FFFFFF;">Accessibility</a></td>
+      <td width="26%" bgcolor="#000000" style="text-align:center;color:#D4D4D4;">&copy; 2026 Happy Burgers</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  const TAX_RATE = 0.085;
+  const info      = JSON.parse(sessionStorage.getItem('customerInfo')  || '{}');
+  const cart      = JSON.parse(sessionStorage.getItem('cart')          || '[]');
+  const confirmId = sessionStorage.getItem('confirmationId') || 'HB-UNKNOWN';
+
+  if (!info.firstName) window.location.href = 'carryout-info.html';
+
+  document.getElementById('confirm-id').textContent    = confirmId;
+  document.getElementById('confirm-name').textContent  = info.firstName + ' ' + info.lastName;
+  document.getElementById('confirm-email').textContent = info.email;
+  document.getElementById('confirm-phone').textContent = info.phone;
+  document.getElementById('confirm-time').textContent  = info.pickupTime;
+
+  function fmt(n) { return '$' + n.toFixed(2); }
+
+  const listEl = document.getElementById('confirm-items-list');
+  cart.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'order-item';
+    div.innerHTML = `<span class="item-qty">1&times;</span><span class="item-name">${item.name}</span><span class="item-price">${fmt(item.cost)}</span>`;
+    listEl.appendChild(div);
+  });
+
+  const subtotal = cart.reduce((s, i) => s + i.cost, 0);
+  const tax      = subtotal * TAX_RATE;
+  const total    = subtotal + tax;
+
+  document.getElementById('confirm-subtotal').textContent = fmt(subtotal);
+  document.getElementById('confirm-tax').textContent      = fmt(tax);
+  document.getElementById('confirm-total').textContent    = fmt(total);
+
+  function goHome() {
+    sessionStorage.removeItem('customerInfo');
+    sessionStorage.removeItem('cart');
+    sessionStorage.removeItem('confirmationId');
+    window.location.href = '../../index.html';
+  }
+</script>
+
+</body>
+</html>

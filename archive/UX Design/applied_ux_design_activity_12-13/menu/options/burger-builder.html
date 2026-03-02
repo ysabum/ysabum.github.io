@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Build-a-Burger</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/burger-builder.css">
+    <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/menu.css">
+  </head>
+<body>
+
+<!--Header Stuff-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <img src="../../images/divider.png" style="width:100%; height:3px; display:block;" alt="">
+    </tr>
+
+    <tr>
+      <td width="28" rowspan="2" bgcolor="#FFFFFF">&nbsp;</td>
+      <td width="186" rowspan="2" bgcolor="#FFFFFF">
+        <a href="../../index.html">
+          <img src="../../images/logo_v2.png" width="150" height="100" alt=""/>
+        </a>
+      </td>
+      <td width="282" height="42" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td width="119" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td width="237" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td colspan="2" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size: 24px; color: #C20830; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', serif;"><strong>⌕ SEARCH</strong></td>
+      <td width="41" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size: 24px">&nbsp;</td>
+    </tr>
+	
+    <tr>
+      <td height="67" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+      <a href="#" class="nav-link full-cell"><strong>LOCATIONS</strong></a>
+      </td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+      <a href="../index.html" class="nav-link full-cell"><strong>MENU</strong></a>
+      </td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+      <a href="#" class="nav-link full-cell"><strong>EMPLOYMENT</strong></a>
+      </td>
+      <td width="172" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+      <a href="#" class="nav-link full-cell"><strong>HISTORY</strong></a>
+      </td>
+      <td width="135" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+      <a href="#" class="nav-link full-cell"><strong>ABOUT</strong></a>
+      </td>
+      <td bgcolor="#FFFFFF">&nbsp;</td>
+    </tr>
+	
+    <tr>
+      <td height="3" colspan="8"><img src="../../images/divider.png" style="width:100%; height:3px; display:block;" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Burger Preview -->
+<div class="preview-section">
+  <div class="burger-visual" id="burgerVisual">
+    <div class="bun-top" id="bunTopVisual"></div>
+    <div class="toppings-layer" id="toppingsVisual"></div>
+    <div class="cheese-layer" id="cheeseVisual"></div>
+    <div class="patty" id="pattyVisual"></div>
+    <div class="bun-bottom"></div>
+  </div>
+  <div class="preview-name" id="previewName">Make-a-Burger</div>
+  <div class="preview-meta">
+    <span id="previewCal">🔥 100 cal</span>
+    <span id="previewPrice">💰 $0.00</span>
+  </div>
+</div>
+
+<main>
+  <!-- BUN OPTIONS -->
+  <div class="panel" data-type="radio">
+    <div class="panel-header"><span class="panel-title">Bun Options</span><span class="panel-icon">🍞</span></div>
+    <div class="panel-body">
+      <div class="option-row selected" data-group="bun" data-name="Standard Bun" data-cal="100" data-price="0.50"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Standard Bun</div><div class="option-sub">100 cal</div></div><div class="option-price">$0.50</div></div>
+      <div class="option-row" data-group="bun" data-name="Standard Bun with Sesame Seeds" data-cal="105" data-price="0.60"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Standard Bun with Sesame Seeds</div><div class="option-sub">105 cal</div></div><div class="option-price">$0.60</div></div>
+      <div class="option-row" data-group="bun" data-name="Lettuce Bun" data-cal="15" data-price="0.20"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Lettuce Bun</div><div class="option-sub">15 cal · Low-carb</div></div><div class="option-price">$0.20</div></div>
+      <div class="option-row" data-group="bun" data-name="Brioche Bun" data-cal="130" data-price="0.80"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Brioche Bun</div><div class="option-sub">130 cal · Buttery</div></div><div class="option-price">$0.80</div></div>
+    </div>
+  </div>
+
+  <!-- PATTY OPTIONS -->
+  <div class="panel" data-type="radio">
+    <div class="panel-header"><span class="panel-title">Patty Options</span><span class="panel-icon">🥩</span></div>
+    <div class="panel-body">
+      <div class="option-row selected" data-group="patty" data-name="Beef Patty" data-cal="200" data-price="1.50"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Beef Patty</div><div class="option-sub">200 cal</div></div><div class="option-price">$1.50</div></div>
+      <div class="option-row" data-group="patty" data-name="Impossible Patty" data-cal="125" data-price="2.60"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Impossible Patty</div><div class="option-sub">125 cal · Plant-based</div></div><div class="option-price">$2.60</div></div>
+      <div class="option-row" data-group="patty" data-name="Chicken Patty" data-cal="125" data-price="2.20"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Chicken Patty</div><div class="option-sub">125 cal · Crispy</div></div><div class="option-price">$2.20</div></div>
+      <div class="option-row" data-group="patty" data-name="Double Beef Patty" data-cal="380" data-price="2.80"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Double Beef Patty</div><div class="option-sub">380 cal · Extra hearty</div></div><div class="option-price">$2.80</div></div>
+    </div>
+  </div>
+
+  <!-- TOPPINGS -->
+  <div class="panel full-width" data-type="multi">
+    <div class="panel-header"><span class="panel-title">Toppings</span><span class="panel-icon">🥗</span></div>
+    <div class="panel-body" style="max-height:none;">
+      <div class="section-divider">Standard Toppings</div>
+      <div class="toppings-grid">
+        <div class="option-row selected" data-group="topping" data-name="Standard Toppings" data-cal="30" data-price="0.50"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Standard Toppings</div><div class="option-sub">Lettuce, tomato, onion, pickle</div></div><div class="option-price">$0.50</div></div>
+        <div class="option-row" data-group="topping" data-name="Ketchup & Mustard" data-cal="20" data-price="0.00"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Ketchup & Mustard</div><div class="option-sub">Classic sauces</div></div><div class="option-price">Free</div></div>
+      </div>
+      <div class="section-divider">Choose Your Own</div>
+      <div class="toppings-grid">
+        <div class="option-row" data-group="topping" data-name="Mushroom" data-cal="15" data-price="0.20"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Mushroom</div><div class="option-sub">Sautéed · 15 cal</div></div><div class="option-price">$0.20</div></div>
+        <div class="option-row" data-group="topping" data-name="Grilled Onion" data-cal="20" data-price="0.20"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Grilled Onion</div><div class="option-sub">Caramelized · 20 cal</div></div><div class="option-price">$0.20</div></div>
+        <div class="option-row" data-group="topping" data-name="American Cheese" data-cal="50" data-price="0.20"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">American Cheese</div><div class="option-sub">50 cal</div></div><div class="option-price">$0.20</div></div>
+        <div class="option-row" data-group="topping" data-name="Bacon" data-cal="80" data-price="0.60"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Bacon</div><div class="option-sub">Crispy strips · 80 cal</div></div><div class="option-price">$0.60</div></div>
+        <div class="option-row" data-group="topping" data-name="Avocado" data-cal="60" data-price="0.80"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Avocado</div><div class="option-sub">Fresh sliced · 60 cal</div></div><div class="option-price">$0.80</div></div>
+        <div class="option-row" data-group="topping" data-name="Jalapeños" data-cal="10" data-price="0.20"><div class="option-checkbox"></div><div class="option-info"><div class="option-name">Jalapeños</div><div class="option-sub">Sliced · 10 cal 🌶</div></div><div class="option-price">$0.20</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer Bar — cart icon lives here now -->
+<div class="footer-bar">
+  <div class="footer-total">
+    <div class="footer-label">Order Total</div>
+    <div class="footer-amount" id="footerPrice">$0.00</div>
+    <div class="footer-calories" id="footerCal">0 cal</div>
+  </div>
+  <div class="footer-actions">
+    <button class="btn btn-outline" onclick="resetOptions()">Reset</button>
+    <button class="btn btn-ghost" onclick="cancelOrder()">Cancel</button>
+    <button class="btn btn-primary" onclick="addToCart()">Add to Cart</button>
+    <button class="cart-icon-btn" onclick="openCart()" aria-label="View cart">
+      🛒
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</div>
+
+<!-- CART PAGE (slides in) -->
+<div class="cart-page" id="cartPage">
+  <div class="cart-page-header">
+    <button class="cart-back-btn" onclick="closeCart()">&#8592;</button>
+    <span class="cart-page-title">Your Cart</span>
+  </div>
+  <div class="cart-page-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">🛒</div>
+      <div class="cart-empty-text">Your cart is empty</div>
+      <div class="cart-empty-sub">Add a burger to get started!</div>
+    </div>
+  </div>
+  <div class="cart-page-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-val" id="cartTotalVal">$0.00</span>
+    </div>
+    <div class="pickup-delivery-label">Choose how to get your order:</div>
+    <button class="fulfillment-btn pickup" onclick="placeOrder('Carryout', '../../order/carryout/carryout-info.html')">Carryout</button>
+    <button class="fulfillment-btn delivery" onclick="placeOrder('Delivery', '../../order/delivery/delivery.html')">Delivery</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const cartItems = [];
+
+  function getPrice(row) { return parseFloat(row.dataset.price) || 0; }
+  function getCal(row) { return parseInt(row.dataset.cal) || 0; }
+
+  function recalculate() {
+    let total = 0, cals = 0;
+    document.querySelectorAll('.option-row.selected').forEach(row => {
+      total += getPrice(row); cals += getCal(row);
+    });
+    document.getElementById('footerPrice').textContent = '$' + total.toFixed(2);
+    document.getElementById('footerCal').textContent = cals + ' cal';
+    document.getElementById('previewPrice').textContent = '💰 $' + total.toFixed(2);
+    document.getElementById('previewCal').textContent = '🔥 ' + cals + ' cal';
+    updateBurgerVisual();
+  }
+
+  function updateBurgerVisual() {
+    const bunVisual = document.getElementById('bunTopVisual');
+    const pattyVisual = document.getElementById('pattyVisual');
+    const toppingsVisual = document.getElementById('toppingsVisual');
+    const cheeseVisual = document.getElementById('cheeseVisual');
+    const bun = document.querySelector('[data-group="bun"].selected');
+    bunVisual.className = 'bun-top';
+    if (bun) {
+      if (bun.dataset.name.includes('Sesame')) bunVisual.classList.add('sesame');
+      if (bun.dataset.name.includes('Lettuce')) bunVisual.classList.add('lettuce-bun');
+    }
+    const patty = document.querySelector('[data-group="patty"].selected');
+    pattyVisual.className = 'patty';
+    if (patty) {
+      pattyVisual.classList.add('visible');
+      if (patty.dataset.name.includes('Impossible')) pattyVisual.classList.add('impossible');
+      if (patty.dataset.name.includes('Chicken')) pattyVisual.classList.add('chicken');
+    }
+    const hasToppings = document.querySelectorAll('[data-group="topping"].selected').length > 0;
+    toppingsVisual.className = 'toppings-layer' + (hasToppings ? ' visible' : '');
+    const hasCheese = [...document.querySelectorAll('[data-group="topping"].selected')].some(t => t.dataset.name.includes('Cheese'));
+    cheeseVisual.className = 'cheese-layer' + (hasCheese ? ' visible' : '');
+  }
+
+  document.querySelectorAll('.panel[data-type="radio"] .option-row').forEach(row => {
+    row.addEventListener('click', () => {
+      document.querySelectorAll('[data-group="' + row.dataset.group + '"]').forEach(r => r.classList.remove('selected'));
+      row.classList.add('selected');
+      recalculate();
+    });
+  });
+
+  document.querySelectorAll('.panel[data-type="multi"] .option-row').forEach(row => {
+    row.addEventListener('click', () => { row.classList.toggle('selected'); recalculate(); });
+  });
+
+  function addToCart() {
+    let total = 0, cals = 0;
+    document.querySelectorAll('.option-row.selected').forEach(row => { total += getPrice(row); cals += getCal(row); });
+    const patty = document.querySelector('[data-group="patty"].selected');
+    const bun = document.querySelector('[data-group="bun"].selected');
+    const toppings = [...document.querySelectorAll('[data-group="topping"].selected')].map(t => t.dataset.name);
+    const hasCheese = toppings.some(t => t.includes('Cheese'));
+    const bunName = bun ? bun.dataset.name : 'Standard Bun';
+    const pattyName = patty ? patty.dataset.name : 'Beef Patty';
+    cartItems.push({
+      name: pattyName + ' on ' + bunName, cal: cals, price: total, toppings, hasCheese,
+      isImpossible: pattyName.includes('Impossible'),
+      isChicken: pattyName.includes('Chicken'),
+      isLettuce: bunName.includes('Lettuce'),
+      isSesame: bunName.includes('Sesame'),
+      hasToppings: toppings.length > 0
+    });
+    updateCartBadge();
+    renderCartItems();
+    showToast('Added to cart!');
+  }
+
+  function updateCartBadge() {
+    const badge = document.getElementById('cartBadge');
+    badge.textContent = cartItems.length;
+    badge.classList.toggle('visible', cartItems.length > 0);
+  }
+
+  function renderCartItems() {
+    const body = document.getElementById('cartBody');
+    const footer = document.getElementById('cartFooter');
+    const empty = document.getElementById('cartEmpty');
+    if (cartItems.length === 0) {
+      body.innerHTML = '';
+      body.appendChild(empty);
+      empty.style.display = 'block';
+      footer.style.display = 'none';
+      return;
+    }
+    let cartTotal = 0;
+    body.innerHTML = '';
+    cartItems.forEach(item => {
+      cartTotal += item.price;
+      const card = document.createElement('div');
+      card.className = 'cart-item-card';
+      card.innerHTML = `
+        <div class="cart-item-visual">
+          <div class="cart-burger-mini">
+            <div class="cb-bun-top ${item.isSesame ? 'sesame' : ''} ${item.isLettuce ? 'lettuce' : ''}"></div>
+            <div class="cb-toppings ${item.hasToppings ? 'visible' : ''}"></div>
+            <div class="cb-cheese ${item.hasCheese ? 'visible' : ''}"></div>
+            <div class="cb-patty ${item.isImpossible ? 'impossible' : ''} ${item.isChicken ? 'chicken' : ''}"></div>
+            <div class="cb-bun-bottom"></div>
+          </div>
+        </div>
+        <div class="cart-item-info">
+          <div>
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-cal">${item.cal} cal</div>
+            ${item.toppings.length ? '<div class="cart-item-toppings">' + item.toppings.join(', ') + '</div>' : ''}
+          </div>
+          <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+        </div>`;
+      body.appendChild(card);
+    });
+    const totalRow = document.createElement('div');
+    totalRow.className = 'cart-total-row';
+    totalRow.innerHTML = `<span class="cart-total-label">Total</span><span class="cart-total-val">$${cartTotal.toFixed(2)}</span>`;
+    body.appendChild(totalRow);
+    document.getElementById('cartTotalVal').textContent = '$' + cartTotal.toFixed(2);
+    footer.style.display = 'flex';
+  }
+
+  function openCart() { document.getElementById('cartPage').classList.add('open'); }
+  function closeCart() { document.getElementById('cartPage').classList.remove('open'); }
+
+  function placeOrder(method, url) {
+    // store cart data
+    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+    window.location.href = url;
+}
+
+  function resetOptions() {
+    document.querySelectorAll('[data-group="bun"]').forEach((r, i) => r.classList.toggle('selected', i === 0));
+    document.querySelectorAll('[data-group="patty"]').forEach((r, i) => r.classList.toggle('selected', i === 0));
+    document.querySelectorAll('[data-group="topping"]').forEach((r, i) => r.classList.toggle('selected', i === 0));
+    recalculate();
+    showToast('Options reset');
+  }
+
+  function cancelOrder() {
+    document.querySelectorAll('.option-row.selected').forEach(r => r.classList.remove('selected'));
+    recalculate();
+    showToast('Order cancelled');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  recalculate();
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  display: block;
+}
+	
+.nav-link {
+  display: block;              
+  width: 100%;
+  color: #C20830;             
+  text-decoration: none;      
+}
+
+.nav-link:visited {
+  color: #C20830;              
+}
+
+.nav-link:hover {
+  color: #880015;              
+  text-decoration: none;
+}
+
+.nav-link:active {
+  color: #C20830;
+}
+
+/* SLIDER */
+.slider {
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  animation: slideShow 27s infinite;
+}
+
+.slides img {
+  width: 100%;
+  height: 800px;
+  object-fit: cover;
+  flex: 0 0 100%;
+}
+	
+.burger-img {
+  display: block;                 
+  border: 1px solid #444444;     
+  box-shadow: 0 8px 10px rgba(0,0,0,0.25);
+}
+
+/* SLIDE ANIMATION */
+@keyframes slideShow {
+
+  0%   { transform: translateX(0%); }
+  25%  { transform: translateX(0%); }
+
+  30%  { transform: translateX(-100%); }
+  55%  { transform: translateX(-100%); }
+
+  60%  { transform: translateX(-200%); }
+  85%  { transform: translateX(-200%); }
+
+  100% { transform: translateX(0%); }
+}
+
+/* DOT CONTAINER */
+.dots {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* DOT STYLE */
+.dots span {
+  width: 18px;
+  height: 18px;
+  background: #C20830;
+  border-radius: 50%;
+  border: 3px solid #C20830;
+}
+
+/* DOT ANIMATIONS */
+.dots span:nth-child(1) {
+  animation: dot1 27s infinite;
+}
+
+.dots span:nth-child(2) {
+  animation: dot2 27s infinite;
+}
+
+.dots span:nth-child(3) {
+  animation: dot3 27s infinite;
+}
+
+/* ACTIVE STATES */
+@keyframes dot1 {
+  0%, 25%   { background: white; }
+  30%, 100% { background: #C20830; }
+}
+
+@keyframes dot2 {
+  0%, 25%   { background: #C20830; }
+  30%, 55%  { background: white; }
+  60%, 100% { background: #C20830; }
+}
+
+@keyframes dot3 {
+  0%, 55%   { background: #C20830; }
+  60%, 85%  { background: white; }
+  100%      { background: #C20830; }
+}

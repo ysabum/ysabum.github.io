@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Happy Burgers – Checkout</title>
+
+  <link rel="stylesheet" href="../../css/home.css">
+  <link rel="stylesheet" href="../../css/d_checkout.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td colspan="8"><img src="../../images/divider.png" style="width:100%; height:3px; display:block;" alt=""></td>
+    </tr>
+
+    <tr>
+      <td width="28" rowspan="2" bgcolor="#FFFFFF">&nbsp;</td>
+      <td width="186" rowspan="2" bgcolor="#FFFFFF">
+        <a href="../../index.html">
+          <img src="../../images/logo_v2.png" width="150" height="100" alt="Happy Burgers"/>
+        </a>
+      </td>
+      <td width="282" height="42" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td width="119" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td width="237" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td colspan="2" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size: 24px; color: #C20830; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', serif;"><strong>⌕ SEARCH</strong></td>
+      <td width="41" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size: 24px">&nbsp;</td>
+    </tr>
+
+    <tr>
+      <td height="67" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="#" class="nav-link full-cell"><strong>LOCATIONS</strong></a>
+      </td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="../../menu/index.html" class="nav-link full-cell"><strong>MENU</strong></a>
+      </td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="#" class="nav-link full-cell"><strong>EMPLOYMENT</strong></a>
+      </td>
+      <td width="172" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="#" class="nav-link full-cell"><strong>HISTORY</strong></a>
+      </td>
+      <td width="135" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="#" class="nav-link full-cell"><strong>ABOUT</strong></a>
+      </td>
+      <td bgcolor="#FFFFFF">&nbsp;</td>
+    </tr>
+
+    <tr>
+      <td height="3" colspan="8"><img src="../../images/divider.png" style="width:100%; height:3px; display:block;" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- LEFT COLUMN -->
+  <div class="left-col">
+
+    <!-- Step indicator -->
+    <div class="steps">
+      <div class="step done">&#10003;</div>
+      <div class="step-line done"></div>
+      <div class="step done">&#10003;</div>
+      <div class="step-line done"></div>
+      <div class="step active">3</div>
+    </div>
+
+    <a class="back-link" href="delivery.html">&#8592; Back to delivery</a>
+
+    <!-- TIME -->
+    <div class="section">
+      <div class="section-row">
+        <div class="section-label">Time</div>
+        <div class="section-content">
+          <div class="radio-opt selected" onclick="selectTime(this)">
+            <div class="radio-outer"><div class="radio-inner"></div></div>
+            <span class="radio-opt-label"><strong>Standard</strong> &middot; 12–22 min</span>
+          </div>
+          <div class="radio-opt" onclick="selectTime(this)">
+            <div class="radio-outer"><div class="radio-inner"></div></div>
+            <span class="radio-opt-label">Schedule for later</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DELIVERY ADDRESS -->
+    <div class="section">
+      <div class="section-row">
+        <div class="section-label">Delivery address</div>
+        <div class="section-content">
+          <div class="map-thumb">
+            <div class="map-thumb-inner">
+              <div class="mgreen" style="top:30%;left:55%;width:30%;height:35%;"></div>
+              <div class="mgreen" style="top:5%;left:70%;width:20%;height:20%;background:#cccccc;"></div>
+              <div class="mroad h" style="top:20%;"></div>
+              <div class="mroad h" style="top:50%;"></div>
+              <div class="mroad h major" style="top:74%;"></div>
+              <div class="mroad v" style="left:40%;"></div>
+              <div class="mroad v" style="left:70%;"></div>
+              <div class="mroad curve"></div>
+              <div class="map-pin-sm">
+                <div class="pin-sm-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="address-line">
+            1001 Cass St Omaha, NE 68102, USA
+            <span class="change-link">Change</span>
+          </div>
+          <div class="dropoff-line">
+            Drop-off: Leave it at my door
+            <span class="change-link">Add / Edit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT & PAYMENT -->
+    <div class="section">
+      <div class="section-row">
+        <div class="section-label">Contact and payment</div>
+        <div class="section-content">
+          <p class="help-text">To maximize your benefits, we'll check if you have an account with us, and we'll text you a code to sign in.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Country</label>
+              <div class="country-select">
+                +1 (US)
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" placeholder="(xxx) xxx-xxxx">
+            </div>
+          </div>
+
+          <p class="help-text" style="margin-top:-4px;">Use a phone number that can receive text messages.</p>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="your@email.com">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" placeholder="First name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" placeholder="Last name">
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="sub-heading">Payment method</div>
+
+          <div class="pay-grid">
+            <div class="pay-option">
+              <div class="pay-left">
+                <div class="pay-icon card">CARD</div>
+                <span class="pay-label">Credit / Debit Card</span>
+              </div>
+              <span class="chevron">&#8250;</span>
+            </div>
+            <div class="pay-option">
+              <div class="pay-left">
+                <div class="pay-icon gpay">G Pay</div>
+                <span class="pay-label">Google Pay</span>
+              </div>
+              <span class="chevron">&#8250;</span>
+            </div>
+            <div class="pay-option">
+              <div class="pay-left">
+                <div class="pay-icon paypal">P</div>
+                <span class="pay-label">PayPal</span>
+              </div>
+              <span class="chevron">&#8250;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN: Order Summary -->
+  <div class="order-summary">
+    <div class="summary-header">Order Summary</div>
+
+    <div class="summary-body">
+      <div class="summary-line">
+        <span class="label">Subtotal</span>
+        <span class="value">$11.99</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Delivery Fee <span class="info-icon">i</span></span>
+        <span class="value">$2.99</span>
+      </div>
+      <div class="summary-line">
+        <span class="label">Fees &amp; Estimated Tax <span class="info-icon">i</span></span>
+        <span class="value">$2.71</span>
+      </div>
+
+      <div class="summary-divider"></div>
+
+      <div class="tip-label">
+        <span>Driver Tip</span>
+        <span id="tip-display">$3.00</span>
+      </div>
+
+      <div class="tip-buttons">
+        <button class="tip-btn" onclick="selectTip(this, '$2.50')">$2.50</button>
+        <button class="tip-btn active" onclick="selectTip(this, '$3.00')">$3.00</button>
+        <button class="tip-btn" onclick="selectTip(this, '$3.50')">$3.50</button>
+        <button class="tip-btn" onclick="selectTip(this, 'Other')">Other</button>
+      </div>
+
+      <p class="tip-note">100% of the tip goes to your driver.</p>
+
+      <div class="summary-divider"></div>
+
+      <div class="total-line">
+        <span>Total</span>
+        <span id="total-display">$20.69</span>
+      </div>
+
+      <p class="legal-text">By placing an order, you agree with our <a href="#">terms</a> and <a href="#">privacy policy</a>.</p>
+
+      <button class="place-order-btn">Place Order</button>
+
+      <div class="signin-link">Sign In / Sign Up</div>
+    </div>
+
+    <!-- Order items -->
+    <div class="order-items">
+      <div class="order-item">
+        <span class="item-qty">1&times;</span>
+        <span class="item-name">Classic Burger Meal</span>
+        <span class="item-price">$8.99</span>
+      </div>
+      <div class="order-item">
+        <span class="item-qty">1&times;</span>
+        <span class="item-name">Vanilla Shake</span>
+        <span class="item-price">$3.00</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td width="14%" height="26" bgcolor="#000000" style="text-align: center"><a href="" target="_blank" style="color: #FFFFFF">Associate Link</a></td>
+      <td width="21%" bgcolor="#000000" style="text-align: center"><a href="" style="color: #FFFFFF">Transparency Supply Chain</a></td>
+      <td width="14%" bgcolor="#000000" style="text-align: center"><a href="" style="color: #FFFFFF">Privacy Policy</a></td>
+      <td width="16%" bgcolor="#000000" style="text-align: center"><a href="" style="color: #FFFFFF">Terms &amp; Conditions</a></td>
+      <td width="12%" bgcolor="#000000" style="text-align: center"><a href="" style="color: #FFFFFF">Accessibility</a></td>
+      <td width="26%" bgcolor="#000000" style="text-align: center; color: #D4D4D4;">&copy; 2026 Happy Burgers</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  function selectTime(el) {
+    document.querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  const tipMap = { '$2.50': 2.50, '$3.00': 3.00, '$3.50': 3.50 };
+  const base = 11.99 + 2.99 + 2.71;
+
+  function selectTip(btn, val) {
+    document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tipDisplay = document.getElementById('tip-display');
+    const totalDisplay = document.getElementById('total-display');
+    if (tipMap[val] !== undefined) {
+      tipDisplay.textContent = val;
+      totalDisplay.textContent = '$' + (base + tipMap[val]).toFixed(2);
+    } else {
+      tipDisplay.textContent = '–';
+      totalDisplay.textContent = '–';
+    }
+  }
+</script>
+
+</body>
+</html>

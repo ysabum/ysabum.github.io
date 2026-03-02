@@ -1,0 +1,88 @@
+.menu-section {
+    background-image: url('../images/menu_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+}
+
+.burger-scroll-container {
+    height: 850px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.our-food-heading {
+    font-size: 52px;
+    font-family: Georgia, serif;
+    font-weight: bold;
+
+    background-color: rgba(255, 255, 255, 0.9); 
+    display: inline-block;  
+    padding: 15px 30px;    
+    border-radius: 5px; 
+}
+
+/* Card Container */
+.burger-card {
+  display: block;
+  width: 400px;
+  height: 500px;
+  background-color: white;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for entire card */
+.burger-card:hover {
+  box-shadow: 0 20px 30px rgba(0,0,0,0.6);
+  transform: translateY(-5px);
+}
+
+/* Burger image */
+.burger-card .burger-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin: 20px auto 10px auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Info container */
+.burger-card .burger-info {
+  text-align: center;
+  padding: 0 15px;
+}
+
+/* Red background name + price bar */
+.burger-card .burger-name-price {
+  background-color: #880015;
+  color: white;
+  padding: 12px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+/* Name & price styling */
+.burger-card .burger-name-price .burger-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.burger-card .burger-name-price .burger-price {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+/* Flavor text */
+.burger-card .burger-flavor {
+  font-size: 14px;
+  color: #333;
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Happy Burger – Carry-Out Information</title>
+
+  <link rel="stylesheet" href="../../css/home.css" />
+  <link rel="stylesheet" href="../../css/c_carryout-info.css" />
+</head>
+<body>
+
+<!-- ── Header ── -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr><td colspan="8"><img src="../../images/divider.png" style="width:100%;height:3px;display:block;" alt=""></td></tr>
+    <tr>
+      <td width="28" rowspan="2" bgcolor="#FFFFFF">&nbsp;</td>
+      <td width="186" rowspan="2" bgcolor="#FFFFFF">
+        <a href="../../index.html"><img src="../../images/logo_v2.png" width="150" height="100" alt="Happy Burgers" /></a>
+      </td>
+      <td width="282" height="42" bgcolor="#FFFFFF" style="font-size:36px;">&nbsp;</td>
+      <td width="119" bgcolor="#FFFFFF" style="font-size:36px;">&nbsp;</td>
+      <td width="237" bgcolor="#FFFFFF" style="font-size:36px;">&nbsp;</td>
+      <td colspan="2" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size:24px;color:#C20830;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><strong>⌕ SEARCH</strong></td>
+      <td width="41" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size:24px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="67" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="#" class="nav-link full-cell"><strong>LOCATIONS</strong></a></td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="../../menu/index.html" class="nav-link full-cell"><strong>MENU</strong></a></td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="#" class="nav-link full-cell"><strong>EMPLOYMENT</strong></a></td>
+      <td width="172" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="#" class="nav-link full-cell"><strong>HISTORY</strong></a></td>
+      <td width="135" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size:30px;font-family:Cambria,'Hoefler Text','Liberation Serif',Times,serif;"><a href="#" class="nav-link full-cell"><strong>ABOUT</strong></a></td>
+      <td bgcolor="#FFFFFF">&nbsp;</td>
+    </tr>
+    <tr><td height="3" colspan="8"><img src="../../images/divider.png" style="width:100%;height:3px;display:block;" alt=""></td></tr>
+  </tbody>
+</table>
+
+<!-- ── Page Content ── -->
+<div class="page">
+
+  <div class="steps">
+    <div class="step active">1</div>
+    <div class="step-line"></div>
+    <div class="step">2</div>
+    <div class="step-line"></div>
+    <div class="step">3</div>
+  </div>
+
+  <div class="section-title">Carry-Out Information</div>
+  <div class="section-subtitle">Enter your details so we can have your order ready for you.</div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label" for="firstName">First Name</label>
+      <input class="form-input" type="text" id="firstName" placeholder="Jane" />
+      <div class="error-text" id="err-firstName"></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="lastName">Last Name</label>
+      <input class="form-input" type="text" id="lastName" placeholder="Smith" />
+      <div class="error-text" id="err-lastName"></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="email">Email Address</label>
+    <input class="form-input" type="email" id="email" placeholder="jane@email.com" />
+    <div class="error-text" id="err-email"></div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label" for="phone">Phone Number</label>
+    <input class="form-input" type="tel" id="phone" placeholder="(555) 867-5309" />
+    <div class="error-text" id="err-phone"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sub-heading">When do you want to pick up?</div>
+  <div class="radio-group">
+    <div class="radio-opt selected" id="opt-now" onclick="selectTime('now')">
+      <div class="radio-outer"><div class="radio-inner"></div></div>
+      <span class="radio-opt-label">As soon as possible</span>
+    </div>
+    <div class="radio-opt" id="opt-later" onclick="selectTime('later')">
+      <div class="radio-outer"><div class="radio-inner"></div></div>
+      <span class="radio-opt-label">Schedule for later</span>
+    </div>
+  </div>
+
+  <div class="time-select-row" id="time-select-row">
+    <label class="form-label" style="white-space:nowrap;margin:0;" for="pickupTime">Pickup Time:</label>
+    <select class="form-select" id="pickupTime">
+      <option value="">Select a time</option>
+      <option>12:00 PM</option><option>12:15 PM</option><option>12:30 PM</option><option>12:45 PM</option>
+      <option>1:00 PM</option><option>1:15 PM</option><option>1:30 PM</option><option>1:45 PM</option>
+      <option>2:00 PM</option><option>2:15 PM</option><option>2:30 PM</option><option>2:45 PM</option>
+      <option>3:00 PM</option><option>3:15 PM</option><option>3:30 PM</option><option>3:45 PM</option>
+      <option>4:00 PM</option><option>4:15 PM</option><option>4:30 PM</option><option>4:45 PM</option>
+      <option>5:00 PM</option><option>5:15 PM</option><option>5:30 PM</option><option>5:45 PM</option>
+      <option>6:00 PM</option><option>6:15 PM</option><option>6:30 PM</option><option>6:45 PM</option>
+    </select>
+  </div>
+  <div class="error-text" id="err-time"></div>
+
+  <div class="btn-group">
+    <button class="btn btn-cancel" onclick="history.back()">Cancel</button>
+    <button class="btn btn-continue" onclick="handleNext()">Continue &rarr;</button>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td width="14%" height="26" bgcolor="#000000" style="text-align:center;"><a href="" target="_blank" style="color:#FFFFFF;">Associate Link</a></td>
+      <td width="21%" bgcolor="#000000" style="text-align:center;"><a href="" style="color:#FFFFFF;">Transparency Supply Chain</a></td>
+      <td width="14%" bgcolor="#000000" style="text-align:center;"><a href="" style="color:#FFFFFF;">Privacy Policy</a></td>
+      <td width="16%" bgcolor="#000000" style="text-align:center;"><a href="" style="color:#FFFFFF;">Terms &amp; Conditions</a></td>
+      <td width="12%" bgcolor="#000000" style="text-align:center;"><a href="" style="color:#FFFFFF;">Accessibility</a></td>
+      <td width="26%" bgcolor="#000000" style="text-align:center;color:#D4D4D4;">&copy; 2026 Happy Burgers</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  function selectTime(choice) {
+    const isLater = choice === 'later';
+    document.getElementById('opt-now').classList.toggle('selected', !isLater);
+    document.getElementById('opt-later').classList.toggle('selected', isLater);
+    document.getElementById('time-select-row').classList.toggle('visible', isLater);
+  }
+
+  function showError(id, msg) { document.getElementById('err-' + id).textContent = msg; }
+  function clearErrors() {
+    ['firstName','lastName','email','phone','time'].forEach(id => showError(id, ''));
+    document.querySelectorAll('.form-input').forEach(el => el.classList.remove('error'));
+  }
+  function markError(id, msg) { showError(id, msg); const el = document.getElementById(id); if (el) el.classList.add('error'); }
+
+  function validate() {
+    let valid = true;
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const email     = document.getElementById('email').value.trim();
+    const phone     = document.getElementById('phone').value.trim();
+    const isLater   = document.getElementById('opt-later').classList.contains('selected');
+    const time      = document.getElementById('pickupTime').value;
+    if (!firstName) { markError('firstName', 'First name is required.'); valid = false; }
+    if (!lastName)  { markError('lastName',  'Last name is required.');  valid = false; }
+    if (!email || !/\S+@\S+\.\S+/.test(email)) { markError('email', 'A valid email is required.'); valid = false; }
+    if (!phone || phone.replace(/\D/g,'').length < 10) { markError('phone', 'A valid 10-digit phone number is required.'); valid = false; }
+    if (isLater && !time) { showError('time', 'Please select a pickup time.'); valid = false; }
+    return valid;
+  }
+
+  function handleNext() {
+    clearErrors();
+    if (!validate()) return;
+    const isLater = document.getElementById('opt-later').classList.contains('selected');
+    const info = {
+      firstName:  document.getElementById('firstName').value.trim(),
+      lastName:   document.getElementById('lastName').value.trim(),
+      email:      document.getElementById('email').value.trim(),
+      phone:      document.getElementById('phone').value.trim(),
+      orderNow:   !isLater,
+      pickupTime: isLater ? document.getElementById('pickupTime').value : 'As soon as possible',
+    };
+    sessionStorage.setItem('customerInfo', JSON.stringify(info));
+    window.location.href = 'order-review.html';
+  }
+</script>
+
+</body>
+</html>

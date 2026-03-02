@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Burgers – Delivery</title>
+
+<link rel="stylesheet" href="../../css/home.css">
+<link rel="stylesheet" href="../../css/d_delivery.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td colspan="8"><img src="../../images/divider.png" style="width:100%; height:3px; display:block;" alt=""></td>
+    </tr>
+
+    <tr>
+      <td width="28" rowspan="2" bgcolor="#FFFFFF">&nbsp;</td>
+      <td width="186" rowspan="2" bgcolor="#FFFFFF">
+        <a href="../../index.html">
+          <img src="../../images/logo_v2.png" width="150" height="100" alt="Happy Burgers"/>
+        </a>
+      </td>
+      <td width="282" height="42" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td width="119" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td width="237" bgcolor="#FFFFFF" style="font-size: 36px">&nbsp;</td>
+      <td colspan="2" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size: 24px; color: #C20830; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', serif;"><strong>⌕ SEARCH</strong></td>
+      <td width="41" align="right" valign="bottom" bgcolor="#FFFFFF" style="font-size: 24px">&nbsp;</td>
+    </tr>
+
+    <tr>
+      <td height="67" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="#" class="nav-link full-cell"><strong>LOCATIONS</strong></a>
+      </td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="../../menu/index.html" class="nav-link full-cell"><strong>MENU</strong></a>
+      </td>
+      <td align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="#" class="nav-link full-cell"><strong>EMPLOYMENT</strong></a>
+      </td>
+      <td width="172" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="#" class="nav-link full-cell"><strong>HISTORY</strong></a>
+      </td>
+      <td width="135" align="right" valign="middle" bgcolor="#FFFFFF" style="font-size: 30px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, serif;">
+        <a href="#" class="nav-link full-cell"><strong>ABOUT</strong></a>
+      </td>
+      <td bgcolor="#FFFFFF">&nbsp;</td>
+    </tr>
+
+    <tr>
+      <td height="3" colspan="8"><img src="../../images/divider.png" style="width:100%; height:3px; display:block;" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+
+    <!-- Step indicator -->
+    <div class="steps">
+      <div class="step done">&#10003;</div>
+      <div class="step-line done"></div>
+      <div class="step active">2</div>
+      <div class="step-line"></div>
+      <div class="step">3</div>
+    </div>
+
+    <!-- Address info -->
+    <div>
+      <div class="section-title">Confirm your address</div>
+      <div class="section-subtitle">We'll find the closest store that can deliver to you.</div>
+    </div>
+
+    <!-- Location badge -->
+    <div class="location-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      Omaha, NE, USA
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- Apt input -->
+    <div class="input-group">
+      <label class="input-label">Apartment / Suite</label>
+      <input type="text" class="apt-input" placeholder="Enter your apartment number or suite">
+    </div>
+
+    <!-- Drop-off options -->
+    <div class="input-group">
+      <div class="dropoff-title">Drop-off Options</div>
+      <div class="radio-group">
+        <div class="radio-option" onclick="selectOption(this)">
+          <div class="radio-circle"><div class="radio-dot"></div></div>
+          <span class="radio-label">Hand it to me</span>
+        </div>
+        <div class="radio-option selected" onclick="selectOption(this)">
+          <div class="radio-circle"><div class="radio-dot"></div></div>
+          <span class="radio-label">Leave it at my door</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="input-group">
+      <label class="input-label">Delivery Instructions (optional)</label>
+      <textarea placeholder="e.g. ring the bell after dropoff, leave next to the porch, call upon arrival, etc."></textarea>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-group">
+      <button class="btn btn-cancel" onclick="history.back()">Cancel</button>
+      <button class="btn btn-save" onclick="window.location.href='checkout.html'">Save &amp; Continue</button>
+    </div>
+
+  </div>
+
+  <!-- RIGHT PANEL: Map -->
+  <div class="right-panel">
+    <div class="map-bg">
+
+      <!-- Green areas -->
+      <div class="green-area" style="width:180px;height:140px;top:35%;left:10%;"></div>
+      <div class="green-area" style="width:100px;height:80px;top:60%;left:35%;border-radius:40%;background:#cccccc;"></div>
+
+      <!-- Water -->
+      <div class="water" style="width:140px;height:90px;top:42%;left:8%;"></div>
+
+      <!-- Horizontal roads -->
+      <div class="road horizontal" style="top:12%;height:18px;background:#C20830;opacity:0.9;"></div>
+      <div class="road horizontal" style="top:28%;height:6px;"></div>
+      <div class="road horizontal" style="top:48%;height:6px;"></div>
+      <div class="road horizontal" style="top:63%;height:6px;"></div>
+      <div class="road horizontal" style="top:74%;height:10px;background:#C20830;opacity:0.6;"></div>
+      <div class="road horizontal" style="top:88%;height:6px;"></div>
+
+      <!-- Vertical roads -->
+      <div class="road vertical" style="left:30%;width:6px;"></div>
+      <div class="road vertical" style="left:50%;width:6px;"></div>
+      <div class="road vertical" style="left:65%;width:6px;"></div>
+      <div class="road vertical" style="left:78%;width:6px;"></div>
+      <div class="road vertical" style="left:90%;width:6px;"></div>
+
+      <!-- Highway -->
+      <div style="position:absolute;top:0;left:18%;width:12%;height:60%;background:transparent;border-right:18px solid #1a1a1a;opacity:0.75;"></div>
+
+      <!-- City blocks -->
+      <div class="block" style="top:20%;left:52%;width:9%;height:6%;"></div>
+      <div class="block" style="top:20%;left:63%;width:8%;height:6%;"></div>
+      <div class="block" style="top:20%;left:73%;width:7%;height:6%;"></div>
+      <div class="block" style="top:30%;left:52%;width:9%;height:12%;"></div>
+      <div class="block" style="top:30%;left:67%;width:10%;height:12%;"></div>
+      <div class="block" style="top:50%;left:52%;width:9%;height:10%;"></div>
+      <div class="block" style="top:50%;left:67%;width:10%;height:10%;"></div>
+      <div class="block" style="top:78%;left:35%;width:9%;height:8%;"></div>
+      <div class="block" style="top:78%;left:52%;width:9%;height:8%;"></div>
+      <div class="block" style="top:78%;left:67%;width:10%;height:8%;"></div>
+      <div class="block" style="top:78%;left:79%;width:7%;height:8%;"></div>
+
+      <!-- Map pin -->
+      <div class="map-pin" style="left:72%;bottom:43%;">
+        <div class="pin-icon"></div>
+        <div class="pin-shadow"></div>
+      </div>
+
+      <!-- Map attribution -->
+      <div class="map-attribution">
+        <span>&copy; </span>
+        <span class="mapbox-logo">mapbox</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td width="14%" height="26" bgcolor="#000000" style="text-align: center"><a href="" target="_blank" style="color: #FFFFFF">Associate Link</a></td>
+      <td width="21%" bgcolor="#000000" style="text-align: center"><a href="" style="color: #FFFFFF">Transparency Supply Chain</a></td>
+      <td width="14%" bgcolor="#000000" style="text-align: center"><a href="" style="color: #FFFFFF">Privacy Policy</a></td>
+      <td width="16%" bgcolor="#000000" style="text-align: center"><a href="" style="color: #FFFFFF">Terms &amp; Conditions</a></td>
+      <td width="12%" bgcolor="#000000" style="text-align: center"><a href="" style="color: #FFFFFF">Accessibility</a></td>
+      <td width="26%" bgcolor="#000000" style="text-align: center; color: #D4D4D4;">&copy; 2026 Happy Burgers</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  function selectOption(el) {
+    document.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+</script>
+
+</body>
+</html>
