@@ -1,1 +1,168 @@
-Add links later?
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      padding: 40px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    /* Back link */
+    .back {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #63C8C5;
+      text-decoration: none;
+    }
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    /* Cards container */
+    .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    width: 100%;
+    max-width: 900px;   /* controls how wide it can get */
+    margin: 0 auto;     /* centers it horizontally */
+    }
+
+    /* Individual card */
+    .item-card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #2a2a2a;
+      width: 100%;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .item-card:hover {
+      transform: translateY(-3px);
+      background-color: #262626;
+    }
+    .item-card a {
+      font-size: 18px;
+      font-weight: bold;
+      color: #63C8C5;
+      text-decoration: none;
+    }
+    .item-card a:hover {
+      text-decoration: underline;
+    }
+    .item-card p {
+      margin-top: 8px;
+      color: #bbbbbb;
+      font-size: 14px;
+    }
+        .item-card li {
+      margin-top: 2.5px;
+      margin-left: 20px;
+      color: #bbbbbb;
+      font-size: 14px;
+    }
+    .item-card img {
+    width: 100%;
+    height: 150px;        
+    object-fit: cover;    /* prevents stretching */
+    border-radius: 6px;
+
+    margin: 10px 0;
+    }
+
+    /* Archive header */
+    .header-card {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    padding: 5px 60px;  /* top/bottom | left/right */
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    text-align: center;
+    }
+
+    .custom-link {
+    color: #ff6b6b;
+    text-decoration: underline;
+    font-weight: bold;
+    }
+
+    .custom-link:hover {
+    color: #ff8787;
+    }
+  </style>
+</head>
+
+
+<!--Main Body-->
+<body>
+  <a href="https://ysabum.github.io/archive" class="back">← Back to Archive</a>
+
+    <div class="cards">
+        <!--Cards-->
+        <div class="item-card">
+        <a href="https://ysabum.github.io/archive/UX_Design">UX Design</a>
+        <p>This page contains notable design artifacts from the course CSCI8266/ACMP4260 at University of Nebraska Omaha.
+            Other design artifacts and coursework can be found 
+            <a href="https://github.com/ysabum/UX-Design" style="font-size: 14px;">here</a>.
+        </p>
+        </div>
+
+        <!--Canvas Livestream-->
+        <div class="item-card">
+        <a href="https://ysabum.github.io/archive/UX_Design/applied_ux_design_activity_10-11/">Chapter 10-11 Applied UX Design Activity: Canvas Livestream</a>
+        <img src="https://ysabum.github.io/archive/UX_Design/applied_ux_design_activity_10-11/logo.png" alt="Boigers">
+        <p>This contains the live version of the UXD Artifact for the <i>A Project Guide to UX Design: For User Experience Designers in the Field or in the Making (2023)</i> Chapter 10-11 activity.
+        The artifact intends to capture the following user story:
+        <i>"First-year university students in STEM fields at the Hinkus Dinkus University experience lower engagement and higher dropout rates in online courses due to a lack of interactive learning tools and peer collaboration opportunities. The goal is to design a digital learning platform that improves engagement by integrating real-time collaboration and gamified learning experiences." <br><br>
+        The problem statement is intended to capture the Canvas online experience for a student. </i></p>
+        </div>
+
+        <!--Happy Burgers-->
+        <div class="item-card">
+        <a href="https://ysabum.github.io/archive/UX_Design/applied_ux_design_activity_12-13/">Chapter 12-13 Applied UX Design Activity: Happy Burgers</a>
+        <img src="https://ysabum.github.io/archive/UX_Design/applied_ux_design_activity_12-13/logo.png" alt="Boigers">
+        <p>This contains the live version of the UXD Artifact for the <i>A Project Guide to UX Design: For User Experience Designers in the Field or in the Making (2023)</i> Chapter 12-13 activity.
+        The artifact intends to capture the following user story:
+        <i>"As a customer, I want to order and customize a hamburger that I can pick up or have delivered to me."</i></p>
+        </div>
+
+        <!--Space Jam-->
+        <div class="item-card">
+        <a href="https://ysabum.github.io/archive/UX_Design/space_jam/">Space Jam Redesign</a>
+        <img src="https://ysabum.github.io/archive/UX_Design/space_jam/logo.png" alt="Jam">
+        <p>This contains the live version of the UXD Artifact for the "Mapping Methods + Nordcraft/Dreamweaver/VS Code Studio Activity" assignment,
+            where students:
+            <li>Selected a small multipage website (5-10ish page) or simple application that they felt like is not very good</li>
+            <li>Created a site or process map of the selected website or app</li>
+            <li>Examined the site and noted what they felt worked well, did not work well, and could be improved</li>
+            <li>Created a new site or process map, representing how the change should function</li>
+        </p>
+        </div>
+
+        <!--Glowworm Music Studio-->
+        <div class="item-card">
+        <a href="https://ysabum.github.io/archive/UX_Design/glowworm_music_studio/">Glowworm Music Studio</a>
+        <img src="https://ysabum.github.io/archive/UX_Design/glowworm_music_studio/logo.png" alt="GMS">
+        <p>This contains the live version of the UXD Artifact, where our
+            group, Team Glowwowrm, created an interactive progressive web application (PWA) 
+            that transforms keyboard input into playable digital instruments, 
+            score‑writing, and multi‑track “band”/song performances for musicians and/or 
+            creators who want an intuitive and customizable way to compose and perform music 
+            that can be shared with others. 
+        </p>
+        </div>
+    </div>
+</body>
+</html>

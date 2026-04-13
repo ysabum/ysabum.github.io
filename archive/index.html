@@ -1,1 +1,120 @@
-Add archive links later?
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      padding: 40px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    /* Back link */
+    .back {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #63C8C5;
+      text-decoration: none;
+    }
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    /* Cards container */
+    .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    width: 100%;
+    max-width: 900px;   /* controls how wide it can get */
+    margin: 0 auto;     /* centers it horizontally */
+    }
+
+    /* Individual card */
+    .item-card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #2a2a2a;
+      width: 100%;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .item-card:hover {
+      transform: translateY(-3px);
+      background-color: #262626;
+    }
+    .item-card a {
+      font-size: 18px;
+      font-weight: bold;
+      color: #63C8C5;
+      text-decoration: none;
+    }
+    .item-card a:hover {
+      text-decoration: underline;
+    }
+    .item-card p {
+      margin-top: 8px;
+      color: #bbbbbb;
+      font-size: 14px;
+    }
+    .item-card img {
+    width: 100%;
+    height: 150px;        
+    object-fit: cover;    /* prevents stretching */
+    border-radius: 6px;
+
+    margin: 10px 0;
+    }
+
+    /* Archive header */
+    .header-card {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    padding: 5px 60px;  /* top/bottom | left/right */
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    text-align: center;
+    }
+  </style>
+</head>
+
+<!--Main Body-->
+<body>
+  <a href="https://ysabum.github.io/" class="back">← Back to Home</a>
+
+    <div class="cards">
+        <!--Header Stuff-->
+        <div class="item-card">
+            <h1><center>ARCHIVE</center></h1>
+            <p>
+                A collection of past projects, reports, and coursework. This page serves as a
+                repository of my previous/archived work across operating systems, UX design, and other areas.
+            </p>
+        </div>
+
+        <!--Cards-->
+        <div class="item-card">
+        <a href="https://ysabum.github.io/archive/UX_Design">UX Design</a>
+        <img src="https://github.com/ysabum/UX-Design/blob/main/images/ch9_journey.png?raw=true" alt="OmahaLocations">
+        <p>This page contains notable design artifacts from the course CSCI8266/ACMP4260 at University of Nebraska Omaha.</p>
+        </div>
+
+        <div class="item-card">
+        <a href="https://github.com/ysabum/Omaha-Locations">Omaha Locations</a>
+        <img src="https://camo.githubusercontent.com/fd491d35a2ab57a9aaa7ad08a368c96c5a189002dd94bfa93f0f592d878a900a/68747470733a2f2f692e696d6775722e636f6d2f374d653649334e2e706e67" alt="OmahaLocations">
+        <p>This link is to the repository for an application for an online travel guide for Omaha, Nebraska using Django, done for the course CSCI8836/CSCI4830.</p>
+        </div>
+    </div>
+
+</body>
+</html>
