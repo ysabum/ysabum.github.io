@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ysa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      display: flex;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      padding: 40px;
+      box-sizing: border-box;
+      gap: 40px;
+    }
+
+    /* Left: Profile Pic */
+    .profile {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile img {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #333;
+    }
+
+    /* Right: Content */
+    .content {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .card {
+      background-color: #1e1e1e;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    h2 {
+      margin-top: 0;
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    a {
+      color: #63C8C5;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .content {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<!--Body-->
+<body>
+  <div class="container">
+
+    <!-- Left: Profile Picture -->
+    <div class="profile">
+      <img src="https://avatars.githubusercontent.com/u/130950514?v=4" alt="Profile Picture">
+    </div>
+
+    <!-- Right: Links -->
+    <div class="content">
+      <div class="card">
+
+        <h2>SITE LINKS</h2>
+        <ul>
+          <li><a href="https://ysabum.github.io/">Home</a></li>
+          <li><a href="https://ysabum.github.io/archive">Archive</a></li>
+        </ul>
+
+        <h2>SOURCES</h2>
+        <ul>
+          <li><a href="https://github.com/UN-ALLN/Canvas_Prototype">Chapter 10-11 Applied UX Design Activity</a></li>
+          <li><a href="https://github.com/1981programmer/ACMP_4260_Applied_UX_Design_Activity">Chapter 12-13 Applied UX Design Activity</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
