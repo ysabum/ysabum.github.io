@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/archive/UX_Design/glowworm_music_studio/static/css/main.e6c13ad2.css",
-    "main.js": "/archive/UX_Design/glowworm_music_studio/static/js/main.77165b78.js",
+    "main.css": "/archive/UX_Design/glowworm_music_studio/static/css/main.64d19d20.css",
+    "main.js": "/archive/UX_Design/glowworm_music_studio/static/js/main.0289f206.js",
     "static/js/453.edfe6303.chunk.js": "/archive/UX_Design/glowworm_music_studio/static/js/453.edfe6303.chunk.js",
+    "static/media/overlay.png": "/archive/UX_Design/glowworm_music_studio/static/media/overlay.0c5c203542bfa71bcc37.png",
     "index.html": "/archive/UX_Design/glowworm_music_studio/index.html",
-    "main.e6c13ad2.css.map": "/archive/UX_Design/glowworm_music_studio/static/css/main.e6c13ad2.css.map",
-    "main.77165b78.js.map": "/archive/UX_Design/glowworm_music_studio/static/js/main.77165b78.js.map",
+    "main.64d19d20.css.map": "/archive/UX_Design/glowworm_music_studio/static/css/main.64d19d20.css.map",
+    "main.0289f206.js.map": "/archive/UX_Design/glowworm_music_studio/static/js/main.0289f206.js.map",
     "453.edfe6303.chunk.js.map": "/archive/UX_Design/glowworm_music_studio/static/js/453.edfe6303.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.77165b78.js"
+    "static/css/main.64d19d20.css",
+    "static/js/main.0289f206.js"
   ]
 }
