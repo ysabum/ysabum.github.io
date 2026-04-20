@@ -1,55 +1,90 @@
 import React, { useEffect, useRef } from 'react';
-import { Renderer, Stave, StaveNote, Accidental, Voice, Formatter } from 'vexflow';
+import { Renderer, Stave, StaveNote, Accidental, TickContext } from 'vexflow';
 
-const Notation = ({ notes, containerId = "notation-svg" }) => {
+const Notation = ({ notes }) => {
   const containerRef = useRef();
 
   useEffect(() => {
+    // 1. Initial State
     if (!notes || notes.length === 0) {
       containerRef.current.innerHTML = `<p style="color: #666; padding-top: 40px; text-align: center; width: 100%;">Click Record to begin...</p>`;
       return;
     }
 
     try {
+      // 2. Clear previous notation
       containerRef.current.innerHTML = '';
       const renderer = new Renderer(containerRef.current, Renderer.Backends.SVG);
-      renderer.resize(800, 150);
+      
+      // Calculate how many lines of music we need based on a set time limit per line
+      const secondsPerLine = 12; // Controls how much time fits on one staff row
+      const staveWidth = 1100;
+      const systemHeight = 150;
+      const numSystems = Math.ceil(notes[notes.length - 1].time / secondsPerLine);
+
+      // Resize the main container to hold all lines
+      renderer.resize(staveWidth + 50, (numSystems * systemHeight) + 20);
       const context = renderer.getContext();
-      context.element.id = containerId; // ID used for saving the image later
 
-      const stave = new Stave(10, 20, 750);
-      stave.addClef("treble").setContext(context).draw();
+      // Ensure notes are black and visible
+      context.setFillStyle('black');
+      context.setStrokeStyle('black');
 
-      const staveNotes = notes.slice(-8).map((n, i) => {
-        const key = n.note.slice(0, -1).toLowerCase() + '/' + n.note.slice(-1);
+      // 3. Loop and render each stave row (system)
+      for (let i = 0; i < numSystems; i++) {
+        const staveY = 10 + (i * systemHeight);
+        const stave = new Stave(10, staveY, staveWidth);
         
-        // RHYTHM LOGIC: Compare time between this note and the next
-        let duration = "q"; 
-        if (i < notes.slice(-8).length - 1) {
-          const diff = notes[i+1].time - n.time;
-          if (diff < 0.3) duration = "8"; // Fast typing = 8th note
-          if (diff > 0.8) duration = "h"; // Slow typing = Half note
-        }
+        if (i === 0) stave.addClef("treble").addTimeSignature("4/4");
+        else stave.addClef("treble");
 
-        const staveNote = new StaveNote({ clef: "treble", keys: [key], duration: duration });
-        if (n.note.includes('#')) staveNote.addModifier(new Accidental("#"), 0);
-        return staveNote;
-      });
+        stave.setContext(context).draw();
+        
+        // --- Process Notes that belong in THIS row ---
+        const startTimeForThisRow = i * secondsPerLine;
+        const endTimeForThisRow = (i + 1) * secondsPerLine;
 
-      if (staveNotes.length > 0) {
-        const voice = new Voice({ num_beats: 100, beat_value: 4 }).setStrict(false);
-        voice.addTickables(staveNotes);
-        new Formatter().joinVoices([voice]).format([voice], 700);
-        voice.draw(context, stave);
+        const rowNotes = notes.filter(n => n.time >= startTimeForThisRow && n.time < endTimeForThisRow);
+
+        rowNotes.forEach((n) => {
+          const key = n.note.slice(0, -1).toLowerCase() + '/' + n.note.slice(-1);
+          const staveNote = new StaveNote({ clef: "treble", keys: [key], duration: "q" });
+          if (n.note.includes('#')) staveNote.addModifier(new Accidental("#"), 0);
+
+          let xOffset = ((n.time - startTimeForThisRow) * 82) + 20;
+
+          const noteTickContext = new TickContext();
+          staveNote.setContext(context).setStave(stave);
+          
+          noteTickContext.addTickable(staveNote).preFormat().setX(xOffset); 
+          
+          staveNote.draw();
+        });
       }
-    } catch (err) {
-      console.error("VexFlow Error:", err);
-    }
-  }, [notes, containerId]);
 
+    } catch (err) {
+      console.error("VexFlow Multi-Line Timing Error:", err);
+    }
+  }, [notes]);
+
+  // White background wrapper with vertical scrolling
   return (
-    <div ref={containerRef} style={{ background: 'white', padding: '10px', borderRadius: '8px' }}></div>
+    <div ref={containerRef} style={notationWrapper}></div>
   );
+};
+
+const notationWrapper = { 
+  background: 'white', 
+  padding: '10px', 
+  borderRadius: '8px', 
+  minHeight: '150px', 
+  width: '100%', 
+  maxHeight: '400px', 
+  overflowY: 'auto', 
+  overflowX: 'auto', // Allows side-to-side scrolling for the wider staff
+  display: 'flex',
+  justifyContent: 'flex-start', // Keeps the clef/notes aligned to the left
+  boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)' 
 };
 
 export default Notation;

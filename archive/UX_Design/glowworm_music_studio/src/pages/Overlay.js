@@ -60,41 +60,41 @@ export default function Overlay({ onBack }) {
 
 
   /* Playback */
-  const playAll = async () => {
-    await Tone.start();
+    const playAll = async () => {
+      await Tone.start();
 
-    let loaded = 0;
-    const newPlayers = [];
+      // 1. Map your tracks into an array of Promises
+      const loadPromises = tracks.map((t) => {
+        return new Promise((resolve) => {
+          const player = new Tone.Player({
+            url: t.url,
+            onload: () => resolve({ player, track: t }) 
+          }).toDestination();
+          
+          player.volume.value = t.volume;
+        });
+      });
 
-    for (let t of tracks) {
-      const player = new Tone.Player({
-        url: t.url,
-        onload: () => {
-          loaded++;
-          if (loaded === tracks.length) {
-            newPlayers.forEach(({ player, track }) => {
-              const duration =
-                track.trimEnd !== "" && track.trimEnd > track.trimStart
-                  ? track.trimEnd - track.trimStart
-                  : undefined;
+      // 2. Wait for all tracks to be loaded before starting
+      const loadedPlayers = await Promise.all(loadPromises);
 
-              player.start(
-                track.startTime,
-                track.trimStart,
-                duration
-              );
-            });
-            setIsPlaying(true);
-          }
-        }
-      }).toDestination();
+      // 3. Start all players at once
+      loadedPlayers.forEach(({ player, track }) => {
+        const duration =
+          track.trimEnd !== "" && track.trimEnd > track.trimStart
+            ? track.trimEnd - track.trimStart
+            : undefined;
 
-      player.volume.value = t.volume;
-      newPlayers.push({ player, track: t });
-    }
+        player.start(
+          track.startTime,
+          track.trimStart,
+          duration
+        );
+      });
 
-    setPlayers(newPlayers);
-  };
+      setPlayers(loadedPlayers);
+      setIsPlaying(true);
+    };
 
   const stopAll = () => {
     players.forEach(({ player }) => player.stop());
