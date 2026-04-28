@@ -208,6 +208,19 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
   const [popup, setPopup] = useState(null); // { key, note, x, y }
   const popupRef = useRef(null);
 
+  // Metronome
+  const [metronomeOn, setMetronomeOn] = useState(false);
+  const [bpm, setBpm] = useState(120);
+  const [beatsPerBar, setBeatsPerBar] = useState(4);
+  const [currentBeat, setCurrentBeat] = useState(null);
+  const metronomeTimerRef = useRef(null);
+  const nextBeatTimeRef = useRef(0);
+  const beatIndexRef = useRef(0);
+  const bpmRef = useRef(120);
+  const beatsPerBarRef = useRef(4);
+  useEffect(() => { bpmRef.current = bpm; }, [bpm]);
+  useEffect(() => { beatsPerBarRef.current = beatsPerBar; }, [beatsPerBar]);
+
   useEffect(() => {
     if (onHasNotesChange) {
       onHasNotesChange(recordedData.length > 0);
@@ -431,6 +444,66 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
   }, [instrumentName, isEditMode]);
 
   /* =========================
+     METRONOME
+     Web Audio lookahead scheduler — accurate, no Tone.Transport needed.
+  ========================= */
+  const scheduleClick = useCallback((audioTime, beat) => {
+    const ctx = Tone.getContext().rawContext;
+    const isDown = beat === 0;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "triangle";
+    osc.frequency.value = isDown ? 1200 : 900;
+    gain.gain.setValueAtTime(isDown ? 0.9 : 0.5, audioTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioTime + 0.04);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(audioTime);
+    osc.stop(audioTime + 0.04);
+    const delayMs = Math.max(0, (audioTime - ctx.currentTime) * 1000);
+    setTimeout(() => setCurrentBeat(beat), delayMs);
+  }, []);
+
+  const startMetronome = useCallback(() => {
+    const ctx = Tone.getContext().rawContext;
+    beatIndexRef.current = 0;
+    nextBeatTimeRef.current = ctx.currentTime + 0.05;
+    metronomeTimerRef.current = setInterval(() => {
+      const now = Tone.getContext().rawContext.currentTime;
+      while (nextBeatTimeRef.current < now + 0.1) {
+        scheduleClick(nextBeatTimeRef.current, beatIndexRef.current);
+        beatIndexRef.current = (beatIndexRef.current + 1) % beatsPerBarRef.current;
+        nextBeatTimeRef.current += 60 / bpmRef.current;
+      }
+    }, 25);
+  }, [scheduleClick]);
+
+  const stopMetronome = useCallback(() => {
+    clearInterval(metronomeTimerRef.current);
+    metronomeTimerRef.current = null;
+    setCurrentBeat(null);
+  }, []);
+
+  const toggleMetronome = useCallback(async () => {
+    if (Tone.getContext().state !== "running") await Tone.start();
+    if (!metronomeOn) {
+      startMetronome();
+      setMetronomeOn(true);
+    } else {
+      stopMetronome();
+      setMetronomeOn(false);
+    }
+  }, [metronomeOn, startMetronome, stopMetronome]);
+
+  // Restart live when BPM or beats change while running
+  useEffect(() => {
+    if (metronomeOn) { stopMetronome(); startMetronome(); }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bpm, beatsPerBar]);
+
+  useEffect(() => () => stopMetronome(), [stopMetronome]);
+
+  /* =========================
      RECORDING TOGGLE
   ========================= */
   const toggleRecording = useCallback(() => {
@@ -598,6 +671,48 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
           )}
         </div>
       </header>
+
+      {/* =====================
+          METRONOME BAR
+      ===================== */}
+      <div className="metronome-bar">
+        <button
+          className={`metronome-toggle-btn ${metronomeOn ? "active" : ""}`}
+          onClick={toggleMetronome}
+        >
+          {metronomeOn ? "⏹ Metronome" : "🎵 Metronome"}
+        </button>
+
+        <div className="metronome-controls">
+          <label className="metronome-label">BPM</label>
+          <input
+            type="range" min="40" max="240" value={bpm}
+            onChange={e => setBpm(Number(e.target.value))}
+            className="bpm-slider"
+          />
+          <span className="bpm-value">{bpm}</span>
+
+          <label className="metronome-label">Beats</label>
+          <select
+            value={beatsPerBar}
+            onChange={e => setBeatsPerBar(Number(e.target.value))}
+            className="beats-select"
+          >
+            {[2, 3, 4, 5, 6, 7, 8].map(n => (
+              <option key={n} value={n}>{n}/4</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="beat-dots">
+          {Array.from({ length: beatsPerBar }, (_, i) => (
+            <div
+              key={i}
+              className={`beat-dot${metronomeOn && currentBeat === i ? (i === 0 ? " active-accent" : " active") : ""}`}
+            />
+          ))}
+        </div>
+      </div>
 
       <div className="score-area">
         <p className="score-label">Real-time VexFlow Notation</p>

@@ -106,6 +106,116 @@
   padding-bottom: 10px;
 }
 
+/* ===== METRONOME ===== */
+.metronome-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 90%;
+  margin: 8px auto 4px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.metronome-toggle-btn {
+  padding: 6px 14px;
+  border: 2px solid #4cc9f0;
+  border-radius: 6px;
+  background: transparent;
+  color: #4cc9f0;
+  font-weight: bold;
+  font-size: 0.82rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.metronome-toggle-btn.active {
+  background: #4cc9f0;
+  color: #1a1a2e;
+}
+
+.metronome-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.metronome-label {
+  color: #aaa;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bpm-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  width: 120px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.2);
+  outline: none;
+  cursor: pointer;
+}
+.bpm-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4cc9f0;
+  cursor: pointer;
+}
+
+.bpm-value {
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9rem;
+  min-width: 30px;
+}
+
+.beats-select {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 5px;
+  color: #fff;
+  padding: 3px 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  outline: none;
+}
+.beats-select option { background: #1a1a2e; }
+
+.beat-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.beat-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: background 0.05s, transform 0.05s;
+}
+.beat-dot.active {
+  background: #4cc9f0;
+  border-color: #4cc9f0;
+  transform: scale(1.25);
+}
+.beat-dot.active-accent {
+  background: #ff6b6b;
+  border-color: #ff6b6b;
+  transform: scale(1.45);
+  box-shadow: 0 0 8px rgba(255,107,107,0.7);
+}
+
 /* Keyboard Area */
 .keyboard-area {
   flex-shrink: 0;
