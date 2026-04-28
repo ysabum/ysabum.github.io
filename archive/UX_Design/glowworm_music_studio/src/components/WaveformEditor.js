@@ -40,7 +40,7 @@ export default function WaveformEditor({ track, updateTrack }) {
         }
         });
     };
-    }, [track.id]);
+    }, [track.id, track.url]);
 
   // Drag (startTime movement)
     const handleMouseDown = () => setIsDragging(true);

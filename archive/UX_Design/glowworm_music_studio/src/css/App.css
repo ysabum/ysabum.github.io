@@ -1,5 +1,9 @@
 /* CSS for Apps.js */
 
+body, html {
+  overflow-x: hidden;
+}
+
 /* App wrapper */
 .app {
   width: 100%;

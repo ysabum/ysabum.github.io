@@ -12,6 +12,8 @@ export default function Overlay({ onBack }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [openPanels, setOpenPanels] = useState([]);
   const [progress, setProgress] = useState("");
+  const [soloPlayer, setSoloPlayer] = useState(null);
+
 
   /* Track Model */
   const handleUpload = (e) => {
@@ -113,8 +115,49 @@ export default function Overlay({ onBack }) {
     setIsPlaying(true);
   };
 
+  const playTrack = async (track) => {
+    await Tone.start();
+
+    // Stop any existing playback
+    stopAll();
+
+    return new Promise((resolve) => {
+      const player = new Tone.Player({
+        url: track.url,
+        onload: () => {
+          player.volume.value = track.volume;
+
+          const duration =
+            track.trimEnd != null && track.trimEnd > track.trimStart
+              ? track.trimEnd - track.trimStart
+              : undefined;
+
+          const now = Tone.now();
+          player.start(
+            now + track.startTime,
+            track.trimStart,
+            duration
+          );
+
+          setSoloPlayer(player);
+          setIsPlaying(true);
+
+          resolve();
+        }
+      }).toDestination();
+    });
+  };
+
   const stopAll = () => {
+    // Stop multi-track players
     players.forEach(({ player }) => player.stop());
+
+    // Stop solo player
+    if (soloPlayer) {
+      soloPlayer.stop();
+      setSoloPlayer(null);
+    }
+
     setIsPlaying(false);
   };
 
@@ -291,20 +334,20 @@ export default function Overlay({ onBack }) {
               >
                 <span className="remove-button" onClick={() => removeTrack(t.id)}>✖</span>
                 <span>{t.file.name}</span>
-
-                {/* Edit Button */}
-                <button
-                  className="edit-button"
-                  onClick={() =>
-                    setOpenPanels((prev) =>
-                      prev.includes(t.id)
-                        ? prev.filter((id) => id !== t.id) // close
-                        : [...prev, t.id] // open
-                    )
-                  }
-                >
-                  Edit
-                </button>
+                <div className="track-buttons">
+                  {/* Edit Button */}
+                  <button className="edit-button" onClick={() =>
+                      setOpenPanels((prev) => prev.includes(t.id)
+                      ? prev.filter((id) => id !== t.id) // close
+                      : [...prev, t.id] // open
+                      )}>
+                    Edit
+                  </button>
+                  {/* Play Button */}
+                  <button className="play-track-button" onClick={() => playTrack(t)}>
+                    ▶ Play
+                  </button>
+                </div>
               </div>
 
               {openPanels.includes(t.id) && (
@@ -382,11 +425,6 @@ export default function Overlay({ onBack }) {
             🡻 Download MP3
           </button>
         </div>
-      </div>
-      
-      {/* Back Button */}
-      <div className="back-container">
-        <button onClick={onBack} className="back-button">← Back to Home</button>
       </div>
     </div>
   );

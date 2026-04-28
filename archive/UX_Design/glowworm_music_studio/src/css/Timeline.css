@@ -1,7 +1,8 @@
 /* CSS for components/Timeline.css */
+
 .timeline {
   margin-top: 30px;
-  padding: 20px;
+  padding: 15px;
   background: #111;
   border-radius: 8px;
   overflow-x: auto;
@@ -40,7 +41,7 @@
   top: 5px;
   height: 40px;
 
-  background: linear-gradient(135deg, #4DD29A, #72B6CE);
+  background: linear-gradient(135deg, #4DD29A, #4ecb82);
   color: #000;
 
   border-radius: 4px;
@@ -62,7 +63,7 @@
 
 /* Chrome / Edge / Safari */
 .timeline::-webkit-scrollbar {
-  height: 10px;
+  height: 5px;
 }
 
 .timeline::-webkit-scrollbar-track {
@@ -71,10 +72,10 @@
 }
 
 .timeline::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #ffffff, #232f52);
+  background: linear-gradient(135deg, #000000, #000000);
   border-radius: 8px;
 }
 
 .timeline::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #bbbbbb, #2f3f6f);
+  background: linear-gradient(135deg, #0047AB, #0047AB);
 }

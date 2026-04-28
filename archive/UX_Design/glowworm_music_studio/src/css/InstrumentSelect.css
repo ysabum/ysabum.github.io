@@ -2,41 +2,41 @@
 
 /* Page container */
 .instrument-page {
-  /* User changed background from turquoise (#40E0D0) to blue */
-  background-color: #0047AB; /* Standard Cobalt Blue, matching image representation */
-  min-height: 100vh;         /* Ensures the color covers the full screen height */
+  background: linear-gradient(to bottom, #0047AB 0%, #0047AB 100%);
+  min-height: 100vh;        
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 0px;
 }
 
-/* Title - Updated to white for contrast against blue background */
+/* Title */
 .instrument-title {
   color: #FFFFFF; /* White */
-  margin-bottom: 30px;
+  margin-top: 60px;
+  margin-bottom: 10px;
   font-size: 2rem;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Optional: extra definition */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
 /* Grid layout */
 .instrument-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 500px;
-  margin: 0 auto 40px auto;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+
+  max-width: 800px;
 }
 
 /* Instrument button */
 .instrument-btn {
-  padding: 30px;
+  padding: 20px;
   font-size: 1.1rem;
   cursor: pointer;
   border: 1px solid #e2e8f0;
-  border-radius: 15px;
-  background-color: white; /* Button is solid white */
+  border-radius: 10px;
+  background-color: white; 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
@@ -53,20 +53,45 @@
   margin-bottom: 8px;
 }
 
-/* Back button - FIX: Solid white button with blue text */
+.instrument-image {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+/* Back button */
 .inst-back-btn {
-  padding: 10px 20px;
+  padding: 10px 15px;
   cursor: pointer;
-  background-color: #FFFFFF; /* Solid white background */
-  color: #0047AB;            /* Blue text, matching page background */
-  border: none;              /* Remove the border since it's solid now */
+  background-color: #FFFFFF;
+  color: #0047AB;          
+  border: none;            
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   transition: background-color 0.15s ease;
 }
 
 .inst-back-btn:hover {
-  background-color: #f0f0f0; /* Slight gray on hover so it still looks interactable */
+  background-color: #f0f0f0; 
+}
+
+.instrument-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: 20px;
+  border-radius: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  width: 100%;
+
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
