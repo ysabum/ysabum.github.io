@@ -30,6 +30,12 @@
   color: #4cc9f0;
 }
 
+.logo {
+  height: 50px;   
+  width: auto;   
+  padding-left: 10px;   
+}
+
 /* Subtitle */
 .home .subtitle {
   font-size: 1.5rem;

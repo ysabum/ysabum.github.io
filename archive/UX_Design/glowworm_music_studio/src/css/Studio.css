@@ -1,7 +1,7 @@
 /* CSS for pages/Studio.js */
 
 .studio-container {
-  height: 100vh;
+  height: 115vh;
   padding: 20px;
   padding-top: 85px;
   display: flex;
@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 93%;
   margin: 0 auto;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 10px;
@@ -57,18 +57,16 @@
 }
 
 .score-area {
-  flex: 1 1 auto;
-  min-height: 0;           
+  flex: 1;
   background: #fff;
   border-radius: 8px;
   padding: 20px;
-  width: 95%;
-  margin: 15px auto;
-
+  width: 90%;            
+  margin: 10px auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-
-  overflow: hidden;          
 }
 
 /* Hide scroll bars */
@@ -111,11 +109,11 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  width: 90%;
-  margin: 8px auto 4px;
+  width: 91%;
+  margin: 8px auto 0px;
   padding: 8px 14px;
   background: rgba(255, 255, 255, 0.07);
-  border-radius: 10px;
+  border-radius: 7px;
   flex-shrink: 0;
   flex-wrap: wrap;
 }
@@ -176,6 +174,19 @@
   font-weight: bold;
   font-size: 0.9rem;
   min-width: 30px;
+}
+
+.bpm-input {
+  width: 40px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 5px;
+  color: #fff;
+  padding: 3px 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
 }
 
 .beats-select {
@@ -370,4 +381,11 @@
 
 .key-popup-dismiss:hover {
   background-color: rgba(96, 165, 250, 0.15);
+}
+
+/* Target the VexFlow drawing directly to stop top-clipping */
+.score-area svg, .score-area canvas {
+  overflow: visible !important; /* Forces the browser to show ink drawn outside the box */
+  margin-top: 40px !important;  /* Pushes the staff down to make room for high ledger lines */
+  padding-bottom: 0px;         /* Keeps a little space at the bottom */
 }

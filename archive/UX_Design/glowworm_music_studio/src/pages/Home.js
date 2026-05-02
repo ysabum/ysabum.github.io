@@ -4,10 +4,9 @@ import testImg from "../images/home_test_play.png";
 import recordImg from "../images/home_record.png";
 import overlayImg from "../images/home_overlay.png";
 import shareImg from "../images/home_share.png";
-
+import logo from "../images/glowworm_logo.png"
 
 export default function Home({ onStart }) {
-
   /* Module Bar declare */
   const [activeTab, setActiveTab] = useState("test");
   const screenshots = {
@@ -30,7 +29,9 @@ export default function Home({ onStart }) {
 
       {/* Hero Text */}
       <div className="hero-content">
-        <h1 className="title">Glowworm Music Studio🐛</h1>
+        <h1 className="title">Glowworm Music Studio
+          <img src={logo} alt="Glowworm logo" className="logo" />
+        </h1>
         <p className="subtitle">Compose. Record. Layer.</p>
 
         <p className="description">

@@ -25,6 +25,7 @@ const Notation = ({ notes }) => {
       // Resize the main container to hold all lines
       renderer.resize(staveWidth + 50, (numSystems * systemHeight) + 20);
       const context = renderer.getContext();
+      context.scale(0.96, 0.96);
 
       // Ensure notes are black and visible
       context.setFillStyle('black');

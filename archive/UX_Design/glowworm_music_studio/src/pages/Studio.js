@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import * as Tone from 'tone';
 import Notation from '../components/Notation';
 import { Renderer, Stave, StaveNote, Accidental } from 'vexflow';
+import { Voice, Formatter } from 'vexflow';
 import "../css/Studio.css";
 
 /* =========================
@@ -218,8 +219,10 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
   const beatIndexRef = useRef(0);
   const bpmRef = useRef(120);
   const beatsPerBarRef = useRef(4);
+  const [bpmInput, setBpmInput] = useState(bpm.toString());
   useEffect(() => { bpmRef.current = bpm; }, [bpm]);
   useEffect(() => { beatsPerBarRef.current = beatsPerBar; }, [beatsPerBar]);
+  useEffect(() => {setBpmInput(bpm.toString());}, [bpm]);
 
   useEffect(() => {
     if (onHasNotesChange) {
@@ -250,6 +253,7 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
   const audioChunks = useRef([]);
   const startTime = useRef(null);
   const destRef = useRef(null);
+  const scoreAreaRef = useRef(null);
 
   /* =========================
      PERFORMANCE REFS
@@ -445,7 +449,7 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
 
   /* =========================
      METRONOME
-     Web Audio lookahead scheduler — accurate, no Tone.Transport needed.
+     Web Audio lookahead scheduler
   ========================= */
   const scheduleClick = useCallback((audioTime, beat) => {
     const ctx = Tone.getContext().rawContext;
@@ -553,6 +557,30 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
     return () => window.removeEventListener("keydown", handleEnterKey);
   }, [toggleRecording, isEditMode]);
 
+    /* =========================
+    AUTOMATIC SCORE SHEET SCROLL DOWN
+  ========================= */
+
+  // "Target Every Box" Scroll Fix
+  useEffect(() => {
+    // Use a small delay to let VexFlow finish drawing the new notes
+    const timer = setTimeout(() => {
+      if (scoreAreaRef.current) {
+
+        // 1. Scroll the main container
+        scoreAreaRef.current.scrollTop = scoreAreaRef.current.scrollHeight;
+        
+        // 2. Find ANY inner containers built by the Notation component and scroll them too
+        const innerDivs = scoreAreaRef.current.querySelectorAll('div');
+        innerDivs.forEach(div => {
+          div.scrollTop = div.scrollHeight;
+        });
+      }
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, [recordedData]); // Triggers every time a new note is played
+
   /* =========================
      SCORE EXPORT (VEXFLOW → PNG)
   ========================= */
@@ -564,37 +592,73 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
 
     const canvas = document.createElement("canvas");
     canvas.width = 1200;
-    canvas.height = numSystems * 150 + 100;
+    
+    const SYSTEM_HEIGHT = 250;
+    canvas.height = numSystems * SYSTEM_HEIGHT + 100;
 
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const renderer = new Renderer(canvas, Renderer.Backends.CANVAS);
+    renderer.resize(canvas.width, canvas.height);
+
     const vf = renderer.getContext();
+    vf.setFont("Arial", 10, "").setBackgroundFillStyle("#fff");
+
+    vf.save();
+    vf.setFillStyle("#ffffff");
+    vf.fillRect(0, 0, canvas.width, canvas.height);
+    vf.restore();
 
     for (let i = 0; i < numSystems; i++) {
-      const stave = new Stave(50, 50 + i * 150, 1100);
+      const SYSTEM_HEIGHT = 250;
+      const stave = new Stave(50, 50 + i * SYSTEM_HEIGHT, 1100);
       stave.addClef("treble");
       if (i === 0) stave.addTimeSignature("4/4");
       stave.setContext(vf).draw();
 
       const start = i * secondsPerLine;
 
-      recordedData
+      const notes = recordedData
         .filter(n => n.time >= start && n.time < start + secondsPerLine)
-        .forEach(n => {
-          const pitch = n.note; // already a valid note like "C4"
-          const keys = pitch.slice(0, -1).toLowerCase() + "/" + pitch.slice(-1);
+        .map(n => {
+          const pitch = n.note;
+          const key = pitch.slice(0, -1).toLowerCase() + "/" + pitch.slice(-1);
+
           let d = "q";
           if (n.duration > 1.5) d = "w";
           else if (n.duration > 0.75) d = "h";
           else if (n.duration < 0.2) d = "8";
 
-          const note = new StaveNote({ clef: "treble", keys: [keys], duration: d });
-          if (n.note.includes("#")) note.addModifier(new Accidental("#"), 0);
-          note.setContext(vf).setStave(stave).draw();
+          const staveNote = new StaveNote({
+            clef: "treble",
+            keys: [key],
+            duration: d
+          });
+
+          if (pitch.includes("#")) {
+            staveNote.addModifier(new Accidental("#"), 0);
+          }
+
+          return staveNote;
         });
+
+      if (notes.length > 0) {
+        const voice = new Voice({
+          num_beats: 4,
+          beat_value: 4
+        });
+
+        voice.setMode(Voice.Mode.SOFT);
+        voice.addTickables(notes);
+
+        new Formatter()
+          .joinVoices([voice])
+          .format([voice], 1000); 
+
+        voice.draw(vf, stave);
+      }
     }
 
     const link = document.createElement("a");
@@ -602,20 +666,6 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
     link.download = "score.png";
     link.click();
   };
-
-  /* =========================
-     AUTO SCROLL SCORE VIEW
-  ========================= */
-  useEffect(() => {
-    const score = document.querySelector(".score-area");
-    if (!score) return;
-
-    const id = requestAnimationFrame(() => {
-      score.scrollTo({ top: score.scrollHeight, behavior: "smooth" });
-    });
-
-    return () => cancelAnimationFrame(id);
-  }, [recordedData]);
 
   /* =========================
      RENDER
@@ -645,9 +695,11 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
         </div>
       )}
 
+      {/* Studio Title */}
       <header className="studio-header">
         <h2 className="studio-title">{instrumentName} Studio</h2>
 
+        {/* Buttons */}
         <div className="studio-controls">
           <button
             className={`edit-toggle-btn ${isEditMode ? "active" : ""}`}
@@ -686,11 +738,41 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
         <div className="metronome-controls">
           <label className="metronome-label">BPM</label>
           <input
-            type="range" min="40" max="240" value={bpm}
+            type="range"
+            min="40"
+            max="240"
+            value={bpm}
             onChange={e => setBpm(Number(e.target.value))}
             className="bpm-slider"
           />
-          <span className="bpm-value">{bpm}</span>
+
+          <input
+            type="text"
+            value={bpmInput}
+            onChange={(e) => {
+              setBpmInput(e.target.value); // allow free typing
+            }}
+            onBlur={() => {
+              let val = Number(bpmInput);
+
+              if (isNaN(val)) {
+                setBpmInput(bpm.toString());
+                return;
+              }
+
+              if (val < 40) val = 40;
+              if (val > 240) val = 240;
+
+              setBpm(val);
+              setBpmInput(val.toString());
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.target.blur(); // commits value
+              }
+            }}
+            className="bpm-input"
+          />
 
           <label className="metronome-label">Beats</label>
           <select
@@ -713,12 +795,14 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
           ))}
         </div>
       </div>
-
-      <div className="score-area">
+      
+      {/* Score Area */}
+      <div className="score-area" ref={scoreAreaRef}>
         <p className="score-label">Real-time VexFlow Notation</p>
         <Notation notes={recordedData} />
       </div>
-
+      
+      {/* Keyboard Area */}
       <div className="keyboard-area" data-tutorial="keyboard-area">
         <p className="instruction-text">
           Use the keyboard to make {instrumentName.toLowerCase()} sounds (Range: C2 - D6)
@@ -736,7 +820,8 @@ const Studio = ({ instrumentName, onBack, onHasNotesChange, onRecordingChange })
             </div>
           ))}
         </div>
-
+        
+        {/* Change Instrument Button */}
         <button className="change-instrument-btn" onClick={onBack}>
           Change Instrument
         </button>

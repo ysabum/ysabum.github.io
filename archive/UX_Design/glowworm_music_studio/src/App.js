@@ -5,6 +5,7 @@ import Studio from "./pages/Studio";
 import Overlay from "./pages/Overlay";
 import Tutorial from "./components/Tutorial";
 import "./css/App.css";
+import logo from "./images/glowworm_logo.png"
 
 export default function App() {
   const [view, setView] = useState("home");
@@ -40,8 +41,9 @@ export default function App() {
 
       {/* NAVBAR */}
       <nav className="navbar">
-        <div className="logo" onClick={goBack}>
-          Glowworm 🐛
+        <div className="nav-name-logo" onClick={goBack}>
+          Glowworm 
+          <img src={logo} alt="Glowworm logo" className="nav-logo"/>
         </div>
 
         <div className="nav-links">
